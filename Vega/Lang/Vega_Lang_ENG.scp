@@ -1,0 +1,17 @@
+// Vega: Design Configuration & Customization
+// Version: Sphere X
+// Author: Luxion
+
+[DEFNAME def_Vega_eng]
+Vega_Lang_ENG_Title								"Internal Game Master Assistant"
+
+// Tabs
+Vega_Tabs_ENG_0_Name								"General"
+Vega_Tabs_ENG_1_Name								"Travel"
+Vega_Tabs_ENG_2_Name								"Spawns"
+Vega_Tabs_ENG_3_Name								"Chars"
+Vega_Tabs_ENG_4_Name								"Items"
+Vega_Tabs_ENG_5_Name								"Accounts"
+Vega_Tabs_ENG_6_Name								"Logs"
+
+[EOF]

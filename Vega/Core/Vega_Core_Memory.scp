@@ -1,0 +1,10 @@
+// Vega: Main Functions
+// Version: Sphere X
+// Author: Luxion
+
+[ITEMDEF i_mem_Vega]
+ID=i_memory
+NAME=Vega
+TYPE=t_eq_script
+
+[EOF]

@@ -1,0 +1,41 @@
+// Vega: Main Dialog
+// Version: Sphere X
+// Author: Luxion
+
+[COMMENT Vega_Dialogs]
+If you have custom gumps please set your gumps IDs in "Vega\Config\Vega_Config_Design.scp"
+
+// Main dialog structure
+[DIALOG d_lux_vega]
+100, 100
+Ref1 = <Src.FindID.i_mem_vega>
+
+RESIZEPIC 0 0 <Def.Vega_Design_Background> 700 250
+CHECKERTRANS 0 0 700 250
+RESIZEPIC 10 50 <Def0.Vega_Design_Div> 680 190
+RESIZEPIC 20 60 <Def0.Vega_Design_Div2> 660 170
+
+DTEXT 25 10 <Def0.Vega_Design_FontColorTitle> <Src.Name> - Vega | <Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>
+
+for 0 <Eval <Def0.Vega_Tabs_Total>-1>
+	local.X = <Eval (<local._for>*90)+15>
+	if (<Ref1.Tag0.CurTab> == <local._for>)
+		GumpPic <local.X> 35 <Def0.Vega_Design_TabOn>
+		local.TabTextColor = 2048
+	else
+		Button <local.X> 35 <Def0.Vega_Design_TabOff> <Def0.Vega_Design_TabOn> 1 0 <Eval 1000+<local._for>>
+		local.TabTextColor = 1000
+	endif
+	DTEXT <Eval <local.X>+10> 35 <local.TabTextColor> <Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>
+endfor
+
+// Button controls
+
+[DIALOG d_lux_vega BUTTON]
+
+ON=1000 1999
+	Ref1 = <Src.FindID.i_mem_vega>
+	Ref1.Tag0.CurTab = <Eval <Argn1>-1000>
+	Src.Vega
+
+[EOF]

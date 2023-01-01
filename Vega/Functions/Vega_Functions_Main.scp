@@ -1,0 +1,15 @@
+// Vega: Main Functions
+// Version: Sphere X
+// Author: Luxion
+
+[FUNCTION Vega]
+if !(<Src.FindID.i_mem_Vega>)
+	Serv.NewItem i_mem_Vega
+	New.Tag0.Lang = ENG
+	New.Timer = -1
+	New.Cont = <Src.Uid>
+endif
+Src.DialogClose d_lux_Vega
+Src.Dialog d_lux_Vega
+
+[EOF]

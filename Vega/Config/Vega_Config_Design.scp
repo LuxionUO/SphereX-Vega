@@ -1,0 +1,20 @@
+// Vega: Design Configuration & Customization
+// Version: Sphere X
+// Author: Luxion
+
+[DEFNAME def_lux_Vega]
+// Customizable Section
+Vega_Design_Background						9270
+Vega_Design_FontColorTitle					48
+Vega_Design_FontColorSubTitle				50
+Vega_Design_FontColorContent				1000
+
+// Core Settings [DO NOT make any change]
+Vega_Design_Div								5100
+Vega_Design_Div2							9200
+Vega_Design_CloseBtnOff						5052
+Vega_Design_CloseBtnOn						5053
+Vega_Design_TabOff							5006
+Vega_Design_TabOn							5007
+
+[EOF]
