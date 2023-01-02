@@ -10,17 +10,26 @@ If you have custom gumps please set your gumps IDs in "Vega\Config\Vega_Config_D
 100, 100
 Ref1 = <Src.FindID.i_mem_vega>
 
-RESIZEPIC 0 0 <Def.Vega_Design_Background> 700 250
-CHECKERTRANS 0 0 700 250
+// <open> Setup
+local.Width = 700
+local.Height = 250
+local.WX = 205
+local.WY = 49
+local.WPX = <Eval (<local.Width>/2)-(<local.WX>/2)>
+local.WPY = <Eval 0-(<local.WY>/2)>
+// <close> Setup
+
+RESIZEPIC 0 0 <Def0.Vega_Design_Background> <local.Width> <local.Height>
+
 RESIZEPIC 10 50 <Def0.Vega_Design_Div> 680 190
 RESIZEPIC 20 60 <Def0.Vega_Design_Div2> 660 170
 
-DTEXT 25 10 <Def0.Vega_Design_FontColorTitle> <Src.Name> - Vega | <Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>
+DTEXT 25 10 <Def0.Vega_Design_FontColorTitle> <Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>
 
 for 0 <Eval <Def0.Vega_Tabs_Total>-1>
 	local.X = <Eval (<local._for>*90)+15>
 	if (<Ref1.Tag0.CurTab> == <local._for>)
-		GumpPic <local.X> 35 <Def0.Vega_Design_TabOn>
+		GumpPic <local.X> 35 <Def0.Vega_Design_TabActive>
 		local.TabTextColor = 2048
 	else
 		Button <local.X> 35 <Def0.Vega_Design_TabOff> <Def0.Vega_Design_TabOn> 1 0 <Eval 1000+<local._for>>
@@ -29,13 +38,71 @@ for 0 <Eval <Def0.Vega_Tabs_Total>-1>
 	DTEXT <Eval <local.X>+10> 35 <local.TabTextColor> <Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>
 endfor
 
+CALL Vega_Contents_<Ref1.Tag0.CurTab>
+
 // Button controls
 
 [DIALOG d_lux_vega BUTTON]
+ON=100 102
+	if (<Argn1> == 101)
+		if (<Eval <Src.Light>+5> > 30)
+			Src.Light = 30
+		else
+			Src.Light += 5
+		endif
+	endif
+	if (<Argn1> == 100)
+		if (<Eval <Src.Light>-5> < 1)
+			Src.Light = 1
+		else
+			Src.Light -= 5
+		endif
+	endif
+	if (<Argn1> == 102)
+		local.SendLight = <ArgTxt[1]>
+		if !(<isnum <local.SendLight>>)
+			Src.Sysmessage @435 Must be a number.
+		endif
+		if (<local.SendLight> > 30)
+			Src.Light = 30
+		elseif (<local.SendLight> < 1)
+			Src.Light = 1
+		else
+			Src.Light = <local.SendLight>
+		endif
+	endif
+	Src.Vega
 
 ON=1000 1999
 	Ref1 = <Src.FindID.i_mem_vega>
 	Ref1.Tag0.CurTab = <Eval <Argn1>-1000>
 	Src.Vega
+	
+ON=2000 2999
+	if (<Argn1> == 2001)
+		Src.Admin
+	endif
+	if (<Argn1> == 2002)
+		Src.Info
+	endif
+	if (<Argn1> == 2003)
+		Src.xEdit
+	endif
+	if (<Argn1> == 2004)
+		Src.Sysmessage Current Clients connected: <Eval <Serv.Clients>>
+	endif
+	if (<Argn1> == 2005)
+		Src.Dialog d_vega_server
+	endif
+	if (<Argn1> == 2006)
+		
+	endif
+	Src.Vega
+
+ON=3000 3999
+
+ON=4000 4999
+
+ON=5000 5999
 
 [EOF]

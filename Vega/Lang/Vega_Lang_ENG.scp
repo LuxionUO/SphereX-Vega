@@ -3,6 +3,8 @@
 // Author: Luxion
 
 [DEFNAME def_Vega_eng]
+BFONT_VEGA										<basefont color="#5A4A31">
+Vega_Version									"1.0"
 Vega_Lang_ENG_Title								"Internal Game Master Assistant"
 
 // Tabs
@@ -13,5 +15,90 @@ Vega_Tabs_ENG_3_Name								"Chars"
 Vega_Tabs_ENG_4_Name								"Items"
 Vega_Tabs_ENG_5_Name								"Accounts"
 Vega_Tabs_ENG_6_Name								"Logs"
+
+// Tab 0 Texts
+Vega_ENG_SetPlevel							"Set Plevel"
+Vega_ENG_Information						"Information"
+Vega_ENG_Functions							"Functions"
+Vega_ENG_ActivateGM							"GM On/Off"
+Vega_ENG_HearAll							"Hear All"
+Vega_ENG_Debug								"Debug Mode"
+Vega_ENG_Info								"Info"
+Vega_ENG_Admin								"Admin"
+Vega_ENG_Edit								"Edit"
+Vega_ENG_Clients							"Clients"
+Vega_ENG_ServInfo							"Serv Info"
+Vega_ENG_Version							"Version"
+Vega_ENG_Link								"Link"
+Vega_ENG_Flip								"Flip"
+Vega_ENG_Shrink								"Shrink"
+Vega_ENG_Remove								"Remove"
+Vega_ENG_Nuke								"Nuke"
+Vega_ENG_Snow								"Snow"
+Vega_ENG_Rain								"Rain"
+Vega_ENG_Dry								"Dry"
+Vega_ENG_LightLevel							"Light Level"
+Vega_ENG_Self								"Self"
+Vega_ENG_Discipline							"Discipline"
+Vega_ENG_Jail								"Jail"
+Vega_ENG_Forgive							"Forgive"
+Vega_ENG_Invisible							"Invisible"
+Vega_ENG_Fix								"Fix"
+Vega_ENG_Tele								"Teleport"
+Vega_ENG_TeleMagic							"Tele Loop"
+Vega_ENG_Kill								"Kill"
+Vega_ENG_Disconnect							"Disconnect"
+Vega_ENG_Resurrect							"Resurrect"
+Vega_ENG_Pages								"Pages"
+Vega_ENG_Ban								"Ban"
+Vega_ENG_Misc								"Misc"
+Vega_ENG_Weather							"Weather"
+Vega_ENG_Unavailable						"Currently unavailable"
+Vega_ENG_Value								"Value"
+Vega_ENG_Version							"Version"
+Vega_ENG_ViewList							"View List"
+Vega_ENG_Chars								"Characters"
+Vega_ENG_Memory								"Memory Used"
+Vega_ENG_AccountName						"Account Name"
+Vega_ENG_Options							"Option"
+Vega_ENG_Actions							"Actions"
+Vega_ENG_Status								"Status"
+Vega_ENG_Access								"Access"
+Vega_ENG_Manage								"Manage"
+Vega_ENG_Find								"Find"
+Vega_ENG_Search								"Search"
+
+// Information
+Vega_Information_ENG_1						"Admin"
+Vega_Information_ENG_2						"Info"
+Vega_Information_ENG_3						"Edit"
+Vega_Information_ENG_4						"Clients"
+Vega_Information_ENG_5						"Server"
+Vega_Information_ENG_6						"Version"
+
+// Misc
+Vega_Misc_ENG_1								"Link"
+Vega_Misc_ENG_2								"Flip"
+Vega_Misc_ENG_3								"Shrink"
+Vega_Misc_ENG_4								"Dupe"
+Vega_Misc_ENG_5								"Remove"
+Vega_Misc_ENG_6								"Nuke"
+
+// Weather
+Vega_Weather_ENG_1							"Snow"
+Vega_Weather_ENG_2							"Rain"
+Vega_Weather_ENG_3							"Dry"
+Vega_Weather_ENG_4							"Light Level"
+Vega_Weather_ENG_SetLight					"Set Light"
+
+// Discipline
+Vega_Discipline_ENG_1						"Jail"
+Vega_Discipline_ENG_2						"Forgive"
+Vega_Discipline_ENG_3						"Kill"
+Vega_Discipline_ENG_4						"Disconnect"
+Vega_Discipline_ENG_5						"Resurrect"
+Vega_Discipline_ENG_6						"Ban"
+Vega_Discipline_ENG_6_Color					432
+
 
 [EOF]
