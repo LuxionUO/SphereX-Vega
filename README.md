@@ -27,5 +27,6 @@ To open the assistant digit `.vega` `.v` in game.
 
 ```diff
 + 3 January 2023
-# Added support for .v command
+Added support for shard customisation
+Added support for .v command
 ```
