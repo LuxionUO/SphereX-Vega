@@ -6,7 +6,7 @@
 In order to use correctly Vega you need to install the folder inside your SphereX `scripts` folder.
 
 1. Download the `SphereX-Vega` archive and extract it;
-2. `Copy` and `Paste` the folder inside your `scripts/` folder;
+2. `Copy` and `Paste` the `Vega` folder inside your `scripts/` folder;
 3. Add the following code to `scripts/spheretables.scp`;
 ```php
 // Vega Plugin
