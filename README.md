@@ -21,4 +21,11 @@ Vega/Lang/
 ```
 4. Restart your Sphere Server.
 
-To open the assistant digit `.vega` in game.
+To open the assistant digit `.vega` `.v` in game.
+
+## Changelogs
+
+```diff
++ 3 January 2023
+# Added support for .v command
+```
