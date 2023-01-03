@@ -19,26 +19,34 @@ local.WPX = <Eval (<local.Width>/2)-(<local.WX>/2)>
 local.WPY = <Eval 0-(<local.WY>/2)>
 // <close> Setup
 
-RESIZEPIC 0 0 <Def0.Vega_Design_Background> <local.Width> <local.Height>
+call VegaInit 720,250
+call VegaDiv 10,10,675,20,<Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>,48
 
-RESIZEPIC 10 50 <Def0.Vega_Design_Div> 680 190
-RESIZEPIC 20 60 <Def0.Vega_Design_Div2> 660 170
-
-DTEXT 25 10 <Def0.Vega_Design_FontColorTitle> <Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>
+call VegaDivEmpty 690,10,20,20
+button 692 13 5602 5606 1 0 0
 
 for 0 <Eval <Def0.Vega_Tabs_Total>-1>
-	local.X = <Eval (<local._for>*90)+15>
+	local.X = <Eval (<local._for>*100)+10>
+	call VegaDivEmpty <local.X>,35,20,20
+	button <eval <local.x>+2> 38 5601 5605 1 0 <Eval 1000+<local._for>>
 	if (<Ref1.Tag0.CurTab> == <local._for>)
-		GumpPic <local.X> 35 <Def0.Vega_Design_TabActive>
-		local.TabTextColor = 2048
+		VegaDivSub <Eval <local.X>+20>,35,80,20,<Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>,63
 	else
-		Button <local.X> 35 <Def0.Vega_Design_TabOff> <Def0.Vega_Design_TabOn> 1 0 <Eval 1000+<local._for>>
-		local.TabTextColor = 1000
+		VegaDivSub <Eval <local.X>+20>,35,80,20,<Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>
 	endif
-	DTEXT <Eval <local.X>+10> 35 <local.TabTextColor> <Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>
 endfor
 
 CALL Vega_Contents_<Ref1.Tag0.CurTab>
+
+// Tool options
+VegaDiv 10,205,700,20,Options
+VegaDivEmpty 10,225,20,20
+VegaBtnEmpty 10,225,0,200
+VegaDivSub 30,225,100,20,Transparent
+
+if (<Src.Ctag0.VegaTransparent>)
+	Checkertrans 0 0 720 250
+endif
 
 // Button controls
 
@@ -72,6 +80,14 @@ ON=100 102
 		endif
 	endif
 	Src.Vega
+	
+ON=200
+	if (<Src.Ctag0.VegaTransparent>)
+		Src.Ctag0.VegaTransparent=
+	else
+		Src.Ctag0.VegaTransparent=1
+	endif
+	Src.Vega
 
 ON=1000 1999
 	Ref1 = <Src.FindID.i_mem_vega>
@@ -79,14 +95,15 @@ ON=1000 1999
 	Src.Vega
 	
 ON=2000 2999
+	Src.Vega
 	if (<Argn1> == 2001)
 		Src.Admin
 	endif
 	if (<Argn1> == 2002)
-		Src.Info
+		Src.vInfo
 	endif
 	if (<Argn1> == 2003)
-		Src.xEdit
+		Src.vEdit
 	endif
 	if (<Argn1> == 2004)
 		Src.Sysmessage Current Clients connected: <Eval <Serv.Clients>>
@@ -97,7 +114,6 @@ ON=2000 2999
 	if (<Argn1> == 2006)
 		
 	endif
-	Src.Vega
 
 ON=3000 3999
 

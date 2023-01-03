@@ -3,63 +3,91 @@
 // Author: Luxion
 
 [FUNCTION Vega_Contents_0]
-DTEXT 30 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Information>
+VegaDiv 10,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Information>,50
 
 for Information 1 6
-	local.Y = <Eval (<local.Information>*22)+70>
-	button 30 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 2000+<local.Information>>
-	dtext 55 <local.Y> <Def0.Vega_Design_FontColorContent> <Def0.Vega_Information_<Ref1.Tag0.Lang>_<local.Information>>
+	local.Y = <Eval (<local.Information>*20)+60>
+	VegaDivEmpty 10,<local.Y>,20,20
+	VegaDivSub 30,<local.Y>,155,20,<Def0.Vega_Information_<Ref1.Tag0.Lang>_<local.Information>>
+	button 12 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 2000+<local.Information>>
 endfor
 
-
-DTEXT 200 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Misc>
+VegaDiv 185,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Misc>,50
 
 for Misc 1 6
-	local.Y = <Eval (<local.Misc>*22)+70>
-	button 200 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 3000+<local.Misc>>
-	dtext 225 <local.Y> <Def0.Vega_Design_FontColorContent> <Def0.Vega_Misc_<Ref1.Tag0.Lang>_<local.Misc>>
+	local.Y = <Eval (<local.Misc>*20)+60>
+	VegaDivEmpty 185,<local.Y>,20,20
+	VegaDivSub 205,<local.Y>,155,20,<Def0.Vega_Misc_<Ref1.Tag0.Lang>_<local.Misc>>
+	button 187 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 3000+<local.Misc>>
 endfor
 
-
-DTEXT 370 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Weather>
+VegaDiv 360,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Weather>,50
 
 for Weather 1 4
-	local.Y = <Eval (<local.Weather>*22)+70>
-	button 370 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 4000+<local.Weather>>
-	if (<Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>) // Has custom color
-		local.FontColor = <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>
-	else
-		local.FontColor = <Def0.Vega_Design_FontColorContent>
-	endif
-	dtext 395 <local.Y> <local.FontColor> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>>
+	local.Y = <Eval (<local.Weather>*20)+60>
+	VegaDivEmpty 360,<local.Y>,20,20
+	VegaDivSub 380,<local.Y>,155,20,<Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>>
+	button 362 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 4000+<local.Weather>>
 endfor
+
+
+// DTEXT 370 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Weather>
+
+// for Weather 1 4
+	// local.Y = <Eval (<local.Weather>*22)+70>
+	// button 370 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 4000+<local.Weather>>
+	// if (<Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>) // Has custom color
+		// local.FontColor = <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>
+	// else
+		// local.FontColor = <Def0.Vega_Design_FontColorContent>
+	// endif
+	// dtext 395 <local.Y> <local.FontColor> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>>
+// endfor
 
 // Light section
-Button 370 <Eval <local.Y>+25> 2435 2436 1 0 100
-GumpPic 380 <Eval <local.Y>+25> 9023
-GumpPicTiled 393 <Eval <local.Y>+25> 100 14 9024
-GumpPic 493 <Eval <local.Y>+25> 9025
+VegaDivEmpty 360,<Eval <local.Y>+20>,20,20
+VegaBtnEmpty 360,<Eval <local.Y>+20>,2,100
+VegaDivEmpty 515,<Eval <local.Y>+20>,20,20
+VegaBtnEmpty 515,<Eval <local.Y>+20>,3,101
+
+VegaDiv 360,<Eval <local.Y>+40>,70,20,<Def0.Vega_Weather_<Ref1.Tag0.Lang>_SetLight>
+VegaDivSubEmpty 430,<Eval <local.Y>+40>,90,20
+VegaDivEmpty 515,<Eval <local.Y>+40>,20,20
+VegaBtnEmpty 515,<Eval <local.Y>+40>,0,102
+
+// Button 370 <Eval <local.Y>+25> 2435 2436 1 0 100
+GumpPic 385 <Eval <local.Y>+24> 9023
+GumpPicTiled 398 <Eval <local.Y>+24> 100 14 9024
+GumpPic 498 <Eval <local.Y>+24> 9025
 // Bullet calculation
-GumpPic <Eval 380+(<Src.Light>*4)> <Eval <local.Y>+25> 9022
-Button 510 <Eval <local.Y>+25> 2437 2438 1 0 101
-DTEXT 370 <Eval <local.Y>+45> <Def0.Vega_Design_FontColorContent> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_SetLight>
-GumpPic 430 <Eval <local.Y>+43> 2443
-DTEXTENTRYLIMITED 435 <Eval <local.Y>+45> 53 25 <Def0.Vega_Design_FontColorSuccess> 1 2 30
-Button 496 <Eval <local.Y>+43> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 102
+GumpPic <Eval 383+(<Src.Light>*4)-5> <Eval <local.Y>+24> 9022
+// Button 510 <Eval <local.Y>+25> 2437 2438 1 0 101
+// DTEXT 370 <Eval <local.Y>+45> <Def0.Vega_Design_FontColorContent> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_SetLight>
+// GumpPic 430 <Eval <local.Y>+43> 2443
+DTEXTENTRYLIMITED 435 <Eval <local.Y>+42> 53 25 <Def0.Vega_Design_FontColorSuccess> 1 2 30
+// Button 496 <Eval <local.Y>+43> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 102
 
-
-DTEXT 540 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Discipline>
+VegaDiv 535,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Discipline>,50
 
 for Discipline 1 6
-	local.Y = <Eval (<local.Discipline>*22)+70>
-	button 540 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
-	if (<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>) // Has custom color
-		local.FontColor = <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>
-	else
-		local.FontColor = <Def0.Vega_Design_FontColorContent>
-	endif
-	dtext 565 <local.Y> <local.FontColor> <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
+	local.Y = <Eval (<local.Discipline>*20)+60>
+	VegaDivEmpty 535,<local.Y>,20,20
+	VegaDivSub 555,<local.Y>,155,20,<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
+	button 537 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
 endfor
+
+// DTEXT 540 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Discipline>
+
+// for Discipline 1 6
+	// local.Y = <Eval (<local.Discipline>*22)+70>
+	// button 540 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
+	// if (<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>) // Has custom color
+		// local.FontColor = <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>
+	// else
+		// local.FontColor = <Def0.Vega_Design_FontColorContent>
+	// endif
+	// dtext 565 <local.Y> <local.FontColor> <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
+// endfor
 
 
 

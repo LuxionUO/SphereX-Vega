@@ -42,12 +42,53 @@ Vega_Design_CloseBtnOn						5053
 Vega_Design_TabOff							5006
 Vega_Design_TabOn							5006
 Vega_Design_TabActive						5007
-Vega_Design_WhiteBtnOff						9903
-Vega_Design_WhiteBtnOn						9904
+Vega_Design_WhiteBtnOff						5601
+Vega_Design_WhiteBtnOn						5605
 Vega_Design_BlueBtnOff						5540
 Vega_Design_BlueBtnOn						5541
 
+[FUNCTION VegaInit]
+local.Width = <Argv[0]>
+local.Height = <Argv[1]>
+RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
+
 [FUNCTION VegaDivSub]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Width = <Argv[2]>
+local.Height = <Argv[3]>
+local.String = <Argv[4]>
+local.FontColor = <Argv[5]>
+local.Border = 1
+// Borders
+if (<local.Border>)
+	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
+	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
+	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
+	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
+	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3004
+	dText <Eval <local.X>+4> <Eval <local.Y>+2> <local.FontColor> <local.String>
+endif
+
+[FUNCTION VegaDivSubTrunc]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Width = <Argv[2]>
+local.Height = <Argv[3]>
+local.String = <Argv[4]>
+local.FontColor = <Argv[5]>
+local.Border = 1
+// Borders
+if (<local.Border>)
+	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
+	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
+	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
+	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
+	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3004
+	dCroppedText <Eval <local.X>+4> <Eval <local.Y>+2> <Eval <local.Width>-5> 20 <local.FontColor> <local.String>
+endif
+
+[FUNCTION VegaDivSubEmpty]
 local.X = <Argv[0]>
 local.Y = <Argv[1]>
 local.Width = <Argv[2]>
@@ -67,7 +108,37 @@ local.X = <Argv[0]>
 local.Y = <Argv[1]>
 local.Width = <Argv[2]>
 local.Height = <Argv[3]>
+local.String = <Argv[4]>
+local.Override.FontColor = <Argv[5]>
 local.Border = 1
+if (<local.Override.FontColor>)
+	local.FontColor = <local.Override.FontColor>
+else
+	local.FontColor = 2048
+endif
+// Borders
+if (<local.Border>)
+	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
+	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
+	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
+	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
+	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3604
+	if !(<isempty <local.String>>)
+		dText <Eval <local.X>+4> <Eval <local.Y>+2> <local.FontColor> <local.String>
+	endif
+endif
+
+[FUNCTION VegaDivEmpty]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Width = <Argv[2]>
+local.Height = <Argv[3]>
+local.Border = 1
+if (<local.Override.FontColor>)
+	local.FontColor = <local.Override.FontColor>
+else
+	local.FontColor = 2048
+endif
 // Borders
 if (<local.Border>)
 	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
@@ -77,15 +148,55 @@ if (<local.Border>)
 	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3604
 endif
 
+[FUNCTION VegaHelp]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Width = <Argv[2]>
+local.Height = <Argv[3]>
+local.String = <Argv[4]>
+local.Border = 1
+local.FontColor = 48
+// Borders
+if (<local.Border>)
+	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
+	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
+	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
+	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
+	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3604
+	ToolTip 1070722,@<local.String>@
+	dText <Eval <local.X>+6> <Eval <local.Y>+2> <local.FontColor> ?
+endif
+
 [FUNCTION VegaTRSub]
 DTEXT <Eval <local.X>+4> <Eval <local.Y>+2> 0 <ARGS>
 
 [FUNCTION VegaTRSubColor]
 DTEXT <Eval <local.X>+4> <Eval <local.Y>+2> <Argv[0]> <Argv[1]>
 
-[FUNCTION VegaTRBtn]
-BUTTON <Eval <local.X>+4> <Eval <local.Y>+3> 5601 5605 1 0 <Argv[1]>
-DTEXT <Eval <local.X>+25> <Eval <local.Y>+2> 0 <Argv[0]>
+[FUNCTION VegaBtn]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+BUTTON <Eval <local.X>+2> <Eval <local.Y>+3> 5601 5605 1 0 <Argv[3]>
+DTEXT <Eval <local.X>+23> <Eval <local.Y>+2> 0 <Argv[2]>
+
+[FUNCTION VegaBtnEmpty]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Direction = <Argv[2]>
+if (<local.Direction> == 1)
+	local.ArrowOff = 5603
+	local.ArrowOn = 5607
+elseif (<local.Direction> == 2)
+	local.ArrowOff = 5600
+	local.ArrowOn = 5604
+elseif (<local.Direction> == 3)
+	local.ArrowOff = 5602
+	local.ArrowOn = 5606
+else
+	local.ArrowOff = 5601
+	local.ArrowOn = 5605
+endif
+BUTTON <Eval <local.X>+2> <Eval <local.Y>+3> <local.ArrowOff> <local.ArrowOn> 1 0 <Argv[3]>
 
 [FUNCTION VegaTR]
 DTEXT <Eval <local.X>+4> <Eval <local.Y>+2> 2048 <ARGS>
