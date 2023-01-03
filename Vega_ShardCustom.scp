@@ -1,0 +1,15 @@
+// Vega: Shard Customization
+// Use this file to customise Vega for your shard.
+// Version: Sphere X
+// Author: Luxion
+
+[DEFNAME Vega_Shard_Custom]
+Vega_Custom_Skills							57
+Vega_Custom_LevelSystem						0
+Vega_Custom_LevelSystemTag					"" // For example if you use tag.level to store level, write 'level'
+Vega_Custom_ExpSystem						0 // Do you use a custom Exp System?
+Vega_Custom_ExpSystemTag					"" // For example if you use tag.exp to store experience, write 'exp'
+Vega_Custom_IniInfoAccessPlevel				7 // Only owners can edit INI infos.
+Vega_Custom_AccessPlevel					4 // By default from Plevel 4, you can choose which Plevel is allowed.
+
+[EOF]
