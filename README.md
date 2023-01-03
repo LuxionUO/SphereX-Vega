@@ -2,6 +2,9 @@
 ## An Internal Game Master Assistant for Sphere X
 :radioactive: **WARNING:** This is a **pre-release**, the code is not stable yet. Please keep in mind that if you decide to install it in a live shard you will take your own risk for data corruption. You **MUST** use it only on a Test Shard.
 
+## Preview
+![Vega](https://i.gyazo.com/567c88b30146eb16e2551ad8dea8e47e.png)
+
 ## Installation
 In order to use correctly Vega you need to install the folder inside your SphereX `scripts` folder.
 
