@@ -380,6 +380,12 @@ ON=100 199
 	local.X.Origin += 20
 	VegaDivSub 365,<local.X.Origin>,100,20,ResEnergyMax,425
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResEnergyMax>,425
+	local.X.Origin += 25
+	VegaDivSub 365,<local.X.Origin>,100,20,Armor,1000
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Armor>,1000
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ModAr,1000
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ModAr>,1000
 	
 [FUNCTION vInfo_Page_Player_2]
 	local.Y.Row = 35
