@@ -14,11 +14,22 @@ endfor
 
 VegaDiv 185,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Misc>,50
 
-for Misc 1 6
-	local.Y = <Eval (<local.Misc>*20)+60>
-	VegaDivEmpty 185,<local.Y>,20,20
-	VegaDivSub 205,<local.Y>,155,20,<Def0.Vega_Misc_<Ref1.Tag0.Lang>_<local.Misc>>
-	button 187 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 3000+<local.Misc>>
+
+local.X.Row = 185
+local.Y.Row = 1
+local.Row.Count = 0
+for Misc 1 12
+	local.Y = <Eval (<local.Y.Row>*20)+60>
+	VegaDivEmpty <local.X.Row>,<local.Y>,20,20
+	VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,75,20,<Def0.Vega_Misc_<Ref1.Tag0.Lang>_<local.Misc>>
+	button <Eval <local.X.Row>+2> <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 3000+<local.Misc>>
+	local.Row.Count += 1
+	local.Y.Row += 1
+	if (<local.Row.Count> == 6)
+		local.X.Row += 87
+		local.Row.Count = 0
+		local.Y.Row = 1
+	endif
 endfor
 
 VegaDiv 360,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Weather>,50
@@ -69,11 +80,21 @@ DTEXTENTRYLIMITED 435 <Eval <local.Y>+42> 53 25 <Def0.Vega_Design_FontColorSucce
 
 VegaDiv 535,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Discipline>,50
 
-for Discipline 1 6
-	local.Y = <Eval (<local.Discipline>*20)+60>
-	VegaDivEmpty 535,<local.Y>,20,20
-	VegaDivSub 555,<local.Y>,155,20,<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
-	button 537 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
+local.X.Row = 535
+local.Y.Row = 1
+local.Row.Count = 0
+for Discipline 1 12
+	local.Y = <Eval (<local.Y.Row>*20)+60>
+	VegaDivEmpty <local.X.Row>,<local.Y>,20,20
+	VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,68,20,<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
+	button <Eval <local.X.Row>+2> <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
+	local.Row.Count += 1
+	local.Y.Row += 1
+	if (<local.Row.Count> == 6)
+		local.X.Row += 87
+		local.Row.Count = 0
+		local.Y.Row = 1
+	endif
 endfor
 
 // DTEXT 540 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Discipline>
