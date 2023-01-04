@@ -29,6 +29,9 @@ To open the assistant digit `.vega` or `.v` in game.
 
 ```diff
 + 4 January 2023
+! 3:43pm by Luxion
+Added: 12 more slots on MainDialog
+Changed: MainDialog headers
 ! 3:13am by Luxion
 Fixed: <Uid.<Ref2.Owner.Name>> returns error, changed with <Ref2.Owner.Name>, Ref2 is already the right pointer.
 Fixed: IsVendor has been moved after IsItem to avoid console errors.
