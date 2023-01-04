@@ -23,7 +23,7 @@ Vega_ShardCustom.scp
 ```
 5. Restart your Sphere Server.
 
-To open the assistant digit `.vega` `.v` in game.
+To open the assistant digit `.vega` or `.v` in game.
 
 ## Changelogs
 
