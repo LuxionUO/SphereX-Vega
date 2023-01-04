@@ -12,7 +12,7 @@ In order to use correctly Vega you need to install the folder inside your Sphere
 2. `Copy` and `Paste` the `Vega` folder inside your `scripts/` folder;
 3. `Copy` and `Paste` the `Vega_ShardCustom.scp` file in your `scripts/` folder;
 4. Add the following code to `scripts/spheretables.scp`;
-```php
+```csharp
 // Vega Plugin
 Vega/Config/
 Vega/Core/
