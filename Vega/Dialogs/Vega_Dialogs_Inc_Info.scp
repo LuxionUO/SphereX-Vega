@@ -45,14 +45,14 @@ TilePicHue 20 65 <Ref2.DispIdDec> <Ref2.Color>
 VegaDiv 10,160,120,20,Menu,50
 if (<Ref2.IsPlayer>)
 	vInfo_Menu_Player
-elseif (<Ref2.IsVendor>)
-	vInfo_Menu_Vendor
 elseif (<Ref2.IsArmor>)
 	vInfo_Menu_Armor
 elseif (<Ref2.IsWeapon>)
 	vInfo_Menu_Weapon
 elseif (<Ref2.IsItem>)
 	vInfo_Menu_Item
+elseif (<Ref2.IsVendor>)
+	vInfo_Menu_Vendor
 elseif (<Ref2.IsChar>)
 	vInfo_Menu_Char
 endif
@@ -525,8 +525,8 @@ ON=100 199
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.HOMEDIST>
 	local.X.Origin += 20
 	VegaDivSub 365,<local.X.Origin>,100,20,Owner
-	IF (<ref2.OWNER>)
-  		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<uid.<ref2.OWNER.NAME>>
+	IF (<Ref2.Owner>)
+  		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Owner.Name>
 	else
 		VegaDivSubTrunc 465,<local.X.Origin>,125,20,N/A
  	ENDIF
