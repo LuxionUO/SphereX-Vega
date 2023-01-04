@@ -25,6 +25,7 @@ return <local.number>
 Ref1 = <Src.FindID.i_mem_vega>
 
 [DEFNAME def_lux_Vega]
+
 // Customizable Section
 Vega_Design_GenericBackground				9200
 Vega_Design_Background						5120

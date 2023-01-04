@@ -24,7 +24,7 @@ Ref2 = <Src.Ctag0.vInfo_Uid>
 
 // <open> Setup
 local.Width = 600
-local.Height = 350
+local.Height = 370
 local.WX = 205
 local.WY = 49
 local.WPX = <Eval (<local.Width>/2)-(<local.WX>/2)>
@@ -57,7 +57,7 @@ elseif (<Ref2.IsChar>)
 endif
 
 if (<Ref2.IsPlayer>)
-	call vInfo_Page_Player
+	call vInfo_Page_Player_<Src.Ctag0.vInfoPage>
 elseif (<Ref2.IsVendor>)
 	vInfo_Page_Vendor
 elseif (<Ref2.IsArmor>)
@@ -75,31 +75,75 @@ ON=200
 	Src.vInfo <Src.cTag0.vInfo_Uid>
 	Src.vEdit <Src.cTag0.vInfo_Uid>
 	
+ON=300 301
+	if (<Argn1> == 300)
+		Src.cTag0.vSkillIndex -= 28
+	endif
+	if (<Argn1> == 301)
+		Src.cTag0.vSkillIndex += 28
+	endif
+	Src.vInfo <Src.cTag0.vInfo_Uid>
+	
+ON=500
+	Src.cTag0.vSkillFind=1
+	Src.cTag0.vSkillSearch=<ArgTxt[1]>
+	Src.cTag0.vSkillIndex=
+	Src.vInfo <Src.cTag0.vInfo_Uid>
+	
+ON=501
+	Src.cTag0.vSkillFind=
+	Src.cTag0.vSkillSearch=
+	Src.cTag0.vSkillIndex=
+	Src.vInfo <Src.cTag0.vInfo_Uid>
+	
+ON=502
+	Ref1 = <Src.cTag0.vInfo_Uid>
+	Ref1.AllSkills <ArgTxt[2]>
+	Src.vInfo <Src.cTag0.vInfo_Uid>
+	
+ON=100 199
+	Src.Ctag0.vInfoPage = <Eval <Argn1>-100>
+	Src.cTag0.vSkillFind=
+	Src.cTag0.vSkillSearch=
+	Src.vInfo <Src.cTag0.vInfo_Uid>
+	
 [FUNCTION vInfo_Menu_Player]
-	VegaDivEmpty 10,180,20,20
-	VegaBtn 10,180,0,100
-	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
-	VegaBtn 10,200,0,101
-	VegaDivSub 30,200,100,20,Skills & Stats
-	VegaDivEmpty 10,220,20,20
-	VegaBtn 10,220,0,102
-	VegaDivSub 30,220,100,20,Flags
-	VegaDivEmpty 10,240,20,20
-	VegaBtn 10,240,0,103
-	VegaDivSub 30,240,100,20,Tags
-	VegaDivEmpty 10,260,20,20
-	VegaBtn 10,260,0,104
-	VegaDivSub 30,260,100,20,Events
-	VegaDivEmpty 10,280,20,20
-	VegaBtn 10,280,0,105
-	VegaDivSub 30,280,100,20,Houses
-	VegaDivEmpty 10,300,20,20
-	VegaBtn 10,300,0,106
-	VegaDivSub 30,300,100,20,Ships
-	VegaDivEmpty 10,320,20,20
-	VegaBtn 10,320,0,107
-	VegaDivSub 30,320,100,20,Followers
+	local.y = 180
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,100
+	VegaDivSub 30,<local.y>,100,20,General
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,101
+	VegaDivSub 30,<local.y>,100,20,Stats
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,102
+	VegaDivSub 30,<local.y>,100,20,Skills
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,103
+	VegaDivSub 30,<local.y>,100,20,Flags
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,104
+	VegaDivSub 30,<local.y>,100,20,Tags
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,105
+	VegaDivSub 30,<local.y>,100,20,Events
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,106
+	VegaDivSub 30,<local.y>,100,20,Followers
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,107
+	VegaDivSub 30,<local.y>,100,20,Ships
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,108
+	VegaDivSub 30,<local.y>,100,20,Houses
 
 [FUNCTION vInfo_Menu_Vendor]
 	VegaDivEmpty 10,180,20,20
@@ -183,9 +227,9 @@ ON=200
 	VegaBtn 10,240,0,103
 	VegaDivSub 30,240,100,20,Events
 	
-[FUNCTION vInfo_Page_Player]
+[FUNCTION vInfo_Page_Player_0]
 	local.X.Origin = 35
-	VegaDiv 135,35,455,20,PlayerObject,50
+	VegaDiv 135,35,455,20,PlayerObject - General,50
 	local.X.Origin += 20
 	VegaDivSub 135,<local.X.Origin>,100,20,Name
 	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Name>
@@ -266,6 +310,149 @@ ON=200
 	local.X.Origin += 20
 	VegaDivSub 365,<local.X.Origin>,100,20,Guild Master
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Serv.Uid.<Guild.MasterUid>.Name>
+	
+[FUNCTION vInfo_Page_Player_1]
+	local.X.Origin = 35
+	VegaDiv 135,35,455,20,PlayerObject - Stats,50
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,STR,435
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.STR>,435
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,DEX,452
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.DEX>,452
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,INT,483
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.INT>,483
+	local.X.Origin += 25
+	VegaDivSub 135,<local.X.Origin>,100,20,OSTR,435
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.OSTR>,435
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,ODEX,452
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.ODEX>,452
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,OINT,483
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.OINT>,483
+	local.X.Origin += 25
+	VegaDivSub 135,<local.X.Origin>,100,20,ModSTR,435
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.ModSTR>,435
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,ModDEX,452
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.ModDEX>,452
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,ModINT,483
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.ModINT>,483
+	local.X.Origin += 25
+	VegaDivSub 135,<local.X.Origin>,100,20,Dam
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,"<Ref2.Dam>"
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,DamPhysical,1000
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.DamPhysical>,1000
+	
+	// Second column
+	local.X.Origin = 35
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResPhysical,1000
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResPhysical>,1000
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResFire,433
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResFire>,433
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResCold,485
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResCold>,485
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResPoison,465
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResPoison>,465
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResEnergy,425
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResEnergy>,425
+	local.X.Origin += 25
+	VegaDivSub 365,<local.X.Origin>,100,20,ResPhysicalMax,1000
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResPhysicalMax>,1000
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResFireMax,433
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResFireMax>,433
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResColdMax,485
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResColdMax>,485
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResPoisonMax,465
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResPoisonMax>,465
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,ResEnergyMax,425
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.ResEnergyMax>,425
+	
+[FUNCTION vInfo_Page_Player_2]
+	local.Y.Row = 35
+	VegaDiv 135,<local.Y.Row>,455,20,PlayerObject - Skills,50
+	
+	// Skill list
+	local.Row = 0
+	local.X.Row = 135
+	// <QVAL (<Eval <Ref2.Count>-<Src.Ctag0.vEditPage>> > 9) ? <Eval <Src.Ctag0.vEditPage>+9>:<Eval <Ref2.Count>-1>>
+	if (<Src.cTag0.vSkillFind>)
+		local.Search = <Src.cTag0.vSkillSearch>
+		for <Src.cTag0.vSkillIndex> <QVAL (<Eval <Def0.Vega_Custom_Skills>-<Src.cTag0.vSkillIndex>> > 27) ? <Eval <Src.cTag0.vSkillIndex>+27>:<Eval <Def0.Vega_Custom_Skills>-1>>
+			if (<Serv.Skill.<local._for>.isvalid>)
+				if (STRMATCH(*<local.Search>*, <Serv.Skill.<local._for>.Key>))
+					local.Row += 1
+					local.Y.Row += 20
+					VegaDivSub <local.X.Row>,<local.Y.Row>,150,20,<Serv.Skill.<local._for>.Key>
+					VegaDivSub <Eval <local.X.Row>+150>,<local.Y.Row>,75,20,<fVal <Ref2.<local._for>>>
+					VegaDivEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
+					VegaBtnEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,0,<Eval 5000+<local._for>>
+					if (<local.Row> == 14)
+						local.Y.Row = 35
+						local.Row = 0
+						local.X.Row = 365
+					endif
+				endif
+			endif
+		endfor
+	else
+		for <Src.cTag0.vSkillIndex> <QVAL (<Eval <Def0.Vega_Custom_Skills>-<Src.cTag0.vSkillIndex>> > 27) ? <Eval <Src.cTag0.vSkillIndex>+27>:<Eval <Def0.Vega_Custom_Skills>-1>>
+			if (<Serv.Skill.<local._for>.isvalid>)
+				local.Row += 1
+				local.Y.Row += 20
+				VegaDivSub <local.X.Row>,<local.Y.Row>,150,20,<Serv.Skill.<local._for>.Key>
+				VegaDivSub <Eval <local.X.Row>+150>,<local.Y.Row>,75,20,<fVal <Ref2.<local._for>>>
+				VegaDivEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
+				VegaBtnEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,0,<Eval 5000+<local._for>>
+				if (<local.Row> == 14)
+					local.Y.Row = 35
+					local.Row = 0
+					local.X.Row = 365
+				endif
+			endif
+		endfor
+	endif
+	
+	VegaDivEmpty 135,340,20,20
+	if (<Src.cTag0.vSkillIndex>)
+		VegaBtnEmpty 135,340,1,300
+	endif
+	
+	VegaDivEmpty 155,340,20,20
+	if (<Eval (<Def0.Vega_Custom_Skills>-<Src.Ctag0.vSkillIndex>)> > 28)
+		VegaBtnEmpty 155,340,0,301
+	endif
+	
+	// Search Engine
+	VegaDiv 180,340,30,20,Find
+	VegaDivSubEmpty 210,340,130,20
+	dTextEntryLimited 212 342 120 20 65 1 16
+	VegaDivEmpty 340,340,20,20
+	VegaBtnEmpty 340,340,0,500
+	if (<Src.cTag0.vSkillFind>)
+		VegaDivEmpty 360,340,20,20
+		VegaBtnEmpty 360,340,1,501 // Clear Search
+	endif
+	
+	VegaDiv 400,340,95,20,Set All Skills
+	VegaDivSubEmpty 495,340,75,20
+	dTextEntryLimited 497 342 75 20 65 2 4
+	VegaDivEmpty 570,340,20,20
+	VegaBtnEmpty 570,340,0,502 // Set all skills
+	
 	
 [FUNCTION vGetAccountBalance]
 local.AccountBalance = 0

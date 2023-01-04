@@ -26,6 +26,9 @@ To open the assistant digit `.vega` `.v` in game.
 ## Changelogs
 
 ```diff
++ 4 January 2023
+Added Stats & Skills on vInfo panel
+
 + 3 January 2023
 Added support for shard customisation
 Added support for .v command
