@@ -76,6 +76,14 @@ ON=200
 	Src.vInfo <Src.cTag0.vInfo_Uid>
 	Src.vEdit <Src.cTag0.vInfo_Uid>
 	
+ON=205
+	Ref1 = <Src.Ctag0.vInfo_Uid>
+	Src.vInfo <Ref1.Owner.Uid>
+	
+ON=206
+	Ref1 = <Src.Ctag0.vInfo_Uid>
+	Src.vInfo <Ref1.FindLayer.Layer_Horse.More2>
+	
 ON=300 301
 	if (<Argn1> == 300)
 		Src.cTag0.vSkillIndex -= 28
@@ -299,6 +307,15 @@ ON=100 199
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Count>
 	VegaDivEmpty 570,<local.X.Origin>,20,20
 	VegaBtnEmpty 570,<local.X.Origin>,0,200
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,Mount
+	if (<Ref2.FindLayer.Layer_Horse.IsValid>)
+		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Serv.Uid.<Ref2.FindLayer.Layer_Horse.More2>.Name>
+		VegaDivEmpty 570,<local.X.Origin>,20,20
+		VegaBtnEmpty 570,<local.X.Origin>,0,206
+	else
+		VegaDivSubTrunc 465,<local.X.Origin>,125,20,None,35
+	endif
 	local.X.Origin += 25
 	VegaDivSub 365,<local.X.Origin>,100,20,Gold Backpack
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,"<Commas <Ref2.Rescount i_gold>>"
@@ -527,6 +544,8 @@ ON=100 199
 	VegaDivSub 365,<local.X.Origin>,100,20,Owner
 	IF (<Ref2.Owner>)
   		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Owner.Name>
+		VegaDivEmpty 570,<local.X.Origin>,20,20
+		VegaBtnEmpty 570,<local.X.Origin>,0,205 // Recall Owner InfoPage
 	else
 		VegaDivSubTrunc 465,<local.X.Origin>,125,20,N/A
  	ENDIF
