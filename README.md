@@ -10,7 +10,8 @@ In order to use correctly Vega you need to install the folder inside your Sphere
 
 1. Download the `SphereX-Vega` archive and extract it;
 2. `Copy` and `Paste` the `Vega` folder inside your `scripts/` folder;
-3. Add the following code to `scripts/spheretables.scp`;
+3. `Copy` and `Paste` the `Vega_ShardCustom.scp` file in your `scripts/` folder;
+4. Add the following code to `scripts/spheretables.scp`;
 ```php
 // Vega Plugin
 Vega/Config/
@@ -18,8 +19,9 @@ Vega/Core/
 Vega/Dialogs/
 Vega/Functions/
 Vega/Lang/
+Vega_ShardCustom.scp
 ```
-4. Restart your Sphere Server.
+5. Restart your Sphere Server.
 
 To open the assistant digit `.vega` `.v` in game.
 
