@@ -29,6 +29,9 @@ To open the assistant digit `.vega` or `.v` in game.
 
 ```diff
 + 4 January 2023
+! 4:07pm by Luxion
+Added: FastSwitch for vCharInfo to see Owner vInfo
+Added: FastSwitch for vPlayerInfo to see Mount vInfo
 ! 3:43pm by Luxion
 Added: 12 more slots on MainDialog
 Changed: MainDialog headers
