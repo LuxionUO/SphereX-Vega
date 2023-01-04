@@ -6,7 +6,7 @@
 [FUNCTION vinfo]
 if (<Args>)
 	Src.Ctag0.vInfo_Uid=<Args>
-	Src.DialogClose d_vega_info
+	//Src.DialogClose d_vega_info
 	Src.Dialog d_vega_info
 else
 	targetf f_vinfo
@@ -14,13 +14,14 @@ endif
 
 [FUNCTION f_vinfo]
 Src.Ctag0.vInfo_Uid=<Argo>
-Src.DialogClose d_vega_info
+//Src.DialogClose d_vega_info
 Src.Dialog d_vega_info
 
 [DIALOG d_vega_info]
 100,100
 CALL VegaLoadMemory
 Ref2 = <Src.Ctag0.vInfo_Uid>
+
 
 // <open> Setup
 local.Width = 600
@@ -53,21 +54,21 @@ elseif (<Ref2.IsWeapon>)
 elseif (<Ref2.IsItem>)
 	vInfo_Menu_Item
 elseif (<Ref2.IsChar>)
-	vInfo_Menu_Item
+	vInfo_Menu_Char
 endif
 
 if (<Ref2.IsPlayer>)
 	call vInfo_Page_Player_<Src.Ctag0.vInfoPage>
 elseif (<Ref2.IsVendor>)
-	vInfo_Page_Vendor
+	call vInfo_Page_Vendor
 elseif (<Ref2.IsArmor>)
-	vInfo_Page_Armor
+	call vInfo_Page_Armor
 elseif (<Ref2.IsWeapon>)
-	vInfo_Page_Weapon
+	call vInfo_Page_Weapon
 elseif (<Ref2.IsItem>)
-	vInfo_Page_Item
+	call vInfo_Page_Item
 elseif (<Ref2.IsChar>)
-	vInfo_Page_Item
+	call vInfo_Page_Char_<Src.Ctag0.vInfoPage>
 endif
 
 [DIALOG d_vega_info BUTTON]
@@ -214,18 +215,30 @@ ON=100 199
 	VegaDivSub 30,240,100,20,Events
 
 [FUNCTION vInfo_Menu_Char]
-	VegaDivEmpty 10,180,20,20
-	VegaBtn 10,180,0,100
-	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
-	VegaBtn 10,200,0,101
-	VegaDivSub 30,200,100,20,Flags
-	VegaDivEmpty 10,220,20,20
-	VegaBtn 10,220,0,102
-	VegaDivSub 30,220,100,20,Tags
-	VegaDivEmpty 10,240,20,20
-	VegaBtn 10,240,0,103
-	VegaDivSub 30,240,100,20,Events
+	local.y = 180
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,100
+	VegaDivSub 30,<local.y>,100,20,General
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,101
+	VegaDivSub 30,<local.y>,100,20,Stats
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,102
+	VegaDivSub 30,<local.y>,100,20,Skills
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,103
+	VegaDivSub 30,<local.y>,100,20,Flags
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,104
+	VegaDivSub 30,<local.y>,100,20,Tags
+	local.y += 20
+	VegaDivEmpty 10,<local.y>,20,20
+	VegaBtn 10,<local.y>,0,105
+	VegaDivSub 30,<local.y>,100,20,Events
 	
 [FUNCTION vInfo_Page_Player_0]
 	local.X.Origin = 35
@@ -459,7 +472,69 @@ ON=100 199
 	VegaDivEmpty 570,340,20,20
 	VegaBtnEmpty 570,340,0,502 // Set all skills
 	
-	
+[FUNCTION vInfo_Page_Char_0]
+	local.X.Origin = 35
+	VegaDiv 135,35,455,20,Npc - General,50
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Name
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Name>
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Action
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Action> (<Ref2.GetCharActionName>)
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Body
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Obody>
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Color
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Color>
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Food
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Ref2.Food>/<Ref2.MaxFood>
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Weight
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,<Fval <Ref2.Weight>>/<Fval <Ref2.MaxWeight>>
+	local.X.Origin += 25
+	VegaDivSub 135,<local.X.Origin>,100,20,Fame
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,"<Commas <Ref2.Fame>>"
+	local.X.Origin += 20
+	VegaDivSub 135,<local.X.Origin>,100,20,Karma
+	VegaDivSubTrunc 235,<local.X.Origin>,125,20,"<Commas <Ref2.Karma>>"
+	local.X.Origin += 20
+		
+	// Second column
+	local.X.Origin = 35
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,Brain
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.NPC> (<DEF.NPCBrain.<Ref2.NPC>>)
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,Uid
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Uid>
+	local.X.Origin += 25
+	VegaDivSub 365,<local.X.Origin>,100,20,Equipped Items
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Count>
+	VegaDivEmpty 570,<local.X.Origin>,20,20
+	VegaBtnEmpty 570,<local.X.Origin>,0,200
+	local.X.Origin += 25
+	VegaDivSub 365,<local.X.Origin>,100,20,Gold Backpack
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,"<Commas <Ref2.Rescount i_gold>>"
+	local.X.Origin += 25
+	VegaDivSub 365,<local.X.Origin>,100,20,Home
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.HOME>
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,HomeDist
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.HOMEDIST>
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,Owner
+	IF (<ref2.OWNER>)
+  		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<uid.<ref2.OWNER.NAME>>
+	else
+		VegaDivSubTrunc 465,<local.X.Origin>,125,20,N/A
+ 	ENDIF
+	local.X.Origin += 20
+	VegaDivSub 365,<local.X.Origin>,100,20,Bounded
+	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.BONDED>
+
+
 [FUNCTION vGetAccountBalance]
 local.AccountBalance = 0
 for 0 4
