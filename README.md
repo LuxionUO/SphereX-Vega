@@ -29,10 +29,10 @@ To open the assistant digit `.vega` `.v` in game.
 
 ```diff
 + 4 January 2023
-@@ 3:13am
+! 3:13am
 Fixed: <Uid.<Ref2.Owner.Name>> returns error, changed with <Ref2.Owner.Name>, Ref2 is already the right pointer.
 Fixed: IsVendor has been moved after IsItem to avoid console errors.
-@@ 2:07am
+! 2:07am
 Added Stats & Skills on vInfo panel
 
 + 3 January 2023
