@@ -33,9 +33,10 @@ To open the assistant digit `.vega` `.v` in game.
 Fixed: <Uid.<Ref2.Owner.Name>> returns error, changed with <Ref2.Owner.Name>, Ref2 is already the right pointer.
 Fixed: IsVendor has been moved after IsItem to avoid console errors.
 ! 2:07am
-Added Stats & Skills on vInfo panel
+Added: Stats & Skills on vInfo panel
 
 + 3 January 2023
-Added support for shard customisation
-Added support for .v command
+! 23:58pm
+Added: support for shard customisation
+Added: support for .v command
 ```
