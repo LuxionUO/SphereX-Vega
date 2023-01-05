@@ -32,6 +32,8 @@ To open the assistant digit `.vega` or `.v` in game.
 ! 4:12am by Jhobean
 Added: Buttons functions for MainDialog
 Changed: Code optimization with "elif" instead of endif -> if
+! 1:52am
+Added: Vega now supports DamAdjusted.Lo and DamAdjusted.Hi to get lowest and highest DamAdjusted.
 + 4 January 2023
 ! 4:07pm by Luxion
 Added: FastSwitch for vCharInfo to see Owner vInfo
