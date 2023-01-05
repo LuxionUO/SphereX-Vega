@@ -58,15 +58,15 @@ ON=100 102
 		else
 			Src.Light += 5
 		endif
-	endif
-	if (<Argn1> == 100)
+		
+	elif (<Argn1> == 100)
 		if (<Eval <Src.Light>-5> < 1)
 			Src.Light = 1
 		else
 			Src.Light -= 5
 		endif
-	endif
-	if (<Argn1> == 102)
+		
+	elif (<Argn1> == 102)
 		local.SendLight = <ArgTxt[1]>
 		if !(<isnum <local.SendLight>>)
 			Src.Sysmessage @435 Must be a number.
@@ -89,36 +89,85 @@ ON=200
 	endif
 	Src.Vega
 
-ON=1000 1999
+ON=1000 1999 //Tab button
 	Ref1 = <Src.FindID.i_mem_vega>
 	Ref1.Tag0.CurTab = <Eval <Argn1>-1000>
 	Src.Vega
-	
-ON=2000 2999
+	if (<Argn1> == 1003) //Chars
+		src.dialogclose d_add
+		Src.add
+	elif (<Argn1> == 1004) //items
+		src.dialogclose d_add
+		Src.add
+	endif
+
+ON=2000 2999 //Generic button
 	Src.Vega
 	if (<Argn1> == 2001)
 		Src.Admin
-	endif
-	if (<Argn1> == 2002)
+
+	elif (<Argn1> == 2002)
 		Src.vInfo
-	endif
-	if (<Argn1> == 2003)
+		
+	elif (<Argn1> == 2003)
 		Src.vEdit
-	endif
-	if (<Argn1> == 2004)
+		
+	elif (<Argn1> == 2004)
 		Src.Sysmessage Current Clients connected: <Eval <Serv.Clients>>
-	endif
-	if (<Argn1> == 2005)
+		
+	elif (<Argn1> == 2005)
 		Src.Dialog d_vega_server
-	endif
-	if (<Argn1> == 2006)
+		
+	elif (<Argn1> == 2006)
 		
 	endif
 
-ON=3000 3999
+ON=3000 3999 // Misc Button
+	Src.Vega
+	if (<Argn1> == 3001) //tele
+		src.tele
+	elif (<Argn1> == 3002) //move
 
-ON=4000 4999
+	elif (<Argn1> == 3003) //flip
+		src.xflip
+	elif (<Argn1> == 3007) //supertele
+		src.dialogclose d_lux_vega //If stay open, impossible to cancel supertele
+		src.t
+	endif
 
-ON=5000 5999
+ON=4000 4999 // Weather
+	Src.Vega
+
+ON=5000 5999 // GameMaster
+	Src.Vega
+	if (<Argn1> == 5001) //invis
+		if (<src.flags>&statf_insubstantial) //FIX me, QVAL evaluation dont seem to work.... dont know why.
+			src.invis=0
+		else
+			src.invis=1
+		endif
+	elif (<Argn1> == 5002) //invul
+		<QVAL <src.flags>&statf_invul ? src.invul=0 : src.invul=1 >
+	elif (<Argn1> == 5003) //Nightsight
+		<QVAL <src.nightsight> ? src.nightsight=0 : src.nightsight=1 >
+	elif (<Argn1> == 5004) //Summon To ????
+		//???
+	elif (<Argn1> == 5005) //Page
+		src.page
+	elif (<Argn1> == 5006) //Jail
+		src.xjail
+	elif (<Argn1> == 5007) //Forgive
+		src.xforgive
+	elif (<Argn1> == 5008) //Kill
+		src.xkill
+	elif (<Argn1> == 5009) //Disconnect
+		src.xdisconnect
+	elif (<Argn1> == 5010) //Resurrect
+		src.xresurrect
+	elif (<Argn1> == 5011) //Ban
+		src.xban
+	elif (<Argn1> == 5012) //Other
+		//Open other dialog
+	endif
 
 [EOF]
