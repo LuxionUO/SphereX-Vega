@@ -77,15 +77,15 @@ Vega_Information_ENG_5						"Server"
 Vega_Information_ENG_6						"Version"
 
 // Misc
-Vega_Misc_ENG_1								"Link"
-Vega_Misc_ENG_2								"Flip"
-Vega_Misc_ENG_3								"Shrink"
+Vega_Misc_ENG_1								"Tele"
+Vega_Misc_ENG_2								"Move"
+Vega_Misc_ENG_3								"Flip"
 Vega_Misc_ENG_4								"Dupe"
 Vega_Misc_ENG_5								"Remove"
 Vega_Misc_ENG_6								"Nuke"
-Vega_Misc_ENG_7								"Tele"
-Vega_Misc_ENG_8								"SuperTele"
-Vega_Misc_ENG_9								"SuperMove"
+Vega_Misc_ENG_7								"SuperTele"
+Vega_Misc_ENG_8								"SuperMove"
+Vega_Misc_ENG_9								"Shrink"
 Vega_Misc_ENG_10							"AllShow"
 Vega_Misc_ENG_11							"HearAll"
 Vega_Misc_ENG_12							"Debug"
@@ -109,7 +109,7 @@ Vega_Discipline_ENG_8						"Kill"
 Vega_Discipline_ENG_9						"Disconnect"
 Vega_Discipline_ENG_10						"Resurrect"
 Vega_Discipline_ENG_11						"Ban,30"
-Vega_Discipline_ENG_12						"+ Other"
+Vega_Discipline_ENG_12						"+ Other" //LINK,SPEED
 
 
 [EOF]
