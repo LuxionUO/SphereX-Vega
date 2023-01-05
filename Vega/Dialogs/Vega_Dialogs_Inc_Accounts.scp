@@ -88,7 +88,6 @@ endif
 
 // Search Engine
 call VegaDiv 10,330,40,20,<Def.Vega_<Ref1.Tag0.Lang>_Find>
-//call VegaTr <Def.Vega_<Ref1.Tag0.Lang>_Find>
 call VegaDivSub 50,330,130,20
 call VegaDiv 180,330,20,20
 button 182 333 5601 5605 1 0 200
