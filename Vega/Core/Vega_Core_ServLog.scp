@@ -1,0 +1,52 @@
+// Vega: System to read real-time console in-game
+// Version: Sphere X
+// Author: Luxion
+
+[FUNCTION vServLog]
+if !(<Src.FindID.i_vServLog>)
+	Serv.NewItem i_vServLog
+	New.Timer = 1
+	New.Cont = <Src.Uid>
+endif
+Src.DialogClose d_vServLog
+Src.Dialog d_vServLog
+
+[DIALOG d_vServLog]
+100, 100
+
+VegaInit 800,600
+
+VegaDiv 10,10,780,20,Vega TelNet: sphere<SERV.RTIME.FORMAT %Y>-<SERV.RTIME.FORMAT %m>-<SERV.RTIME.FORMAT %d>.log...,63
+VegaDiv 10,35,780,530
+
+local.vFile = "<Serv.Log>\sphere<SERV.RTIME.FORMAT %Y>-<SERV.RTIME.FORMAT %m>-<SERV.RTIME.FORMAT %d>.log"
+local.vFile.Open = <FILE.OPEN <local.vFile>>
+local.vFile.Lines = <FILE.FILELINES <local.vFile>>
+local.Y.Origin = 40
+FOR <Eval <local.vFile.Lines>-26> <Eval <local.vFile.Lines>>
+	DTEXT 15 <local.Y.Origin> 2048 <FILE.READLINE <LOCAL._FOR>>
+	local.Y.Origin += 20
+ENDFOR
+FILE.CLOSE
+
+VegaDivSub 10,570,780,20
+
+[ITEMDEF i_vServLog]
+ID=i_memory
+NAME=Server Log
+TYPE=t_eq_script
+
+ON=@Create
+	Timer=1
+	
+ON=@Timer
+	if !(<Cont.IsDialogOpen.d_vServLog>)
+		Remove
+		return 1
+	endif
+	TrySrc <Cont.Uid> dialogclose d_vServLog
+	TrySrc <Cont.Uid> dialog d_vServLog
+	Timer=1
+	return 1
+
+[EOF]
