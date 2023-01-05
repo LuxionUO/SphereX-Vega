@@ -18,26 +18,19 @@ local.WPY = 0
 
 RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
 
-call VegaDiv 10,10,40,20
-call VegaTr #
+call VegaDiv 10,10,40,20,#
 
-call VegaDiv 50,10,150,20
-call VegaTr <Def0.Vega_<Ref1.Tag0.Lang>_AccountName>
+call VegaDiv 50,10,150,20,<Def0.Vega_<Ref1.Tag0.Lang>_AccountName>
 
-call VegaDiv 200,10,100,20
-call VegaTr <Def0.Vega_<Ref1.Tag0.Lang>_Chars>
+call VegaDiv 200,10,100,20,<Def0.Vega_<Ref1.Tag0.Lang>_Chars>
 
-call VegaDiv 300,10,50,20
-call VegaTr Tags
+call VegaDiv 300,10,50,20,Tags
 
-call VegaDiv 350,10,50,20
-call VegaTr <Def0.Vega_<Ref1.Tag0.Lang>_Status>
+call VegaDiv 350,10,50,20,<Def0.Vega_<Ref1.Tag0.Lang>_Status>
 
-call VegaDiv 400,10,60,20
-call VegaTr <Def0.Vega_<Ref1.Tag0.Lang>_Access>
+call VegaDiv 400,10,60,20,<Def0.Vega_<Ref1.Tag0.Lang>_Access>
 
-call VegaDiv 460,10,100,20
-call VegaTr <Def0.Vega_<Ref1.Tag0.Lang>_Actions>
+call VegaDiv 460,10,100,20,<Def0.Vega_<Ref1.Tag0.Lang>_Actions>
 
 local.Y.Metric = 0
 if (<Src.Ctag0.VegaSearch>)
@@ -47,24 +40,18 @@ if (<Src.Ctag0.VegaSearch>)
 			if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
 				local.Y = <Eval (<local.Y.Metric>*20)+30>
 				local.Pos = <Eval <local._for>+1>
-				call VegaDivSub 10,<local.Y>,40,20
-				call VegaTrSub <local.Pos>
-				
-				call VegaDivSub 50,<local.Y>,150,20
-				call VegaTrSub <Serv.Account.<local._for>.Name>
-				
-				call VegaDivSub 200,<local.Y>,100,20
-				call VegaTrSub <Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
-				
-				call VegaDivSub 300,<local.Y>,50,20
-				call VegaTrSub <Serv.Account.<local._for>.TagCount>
-				
-				call VegaDivSub 350,<local.Y>,50,20
-				call VegaTrSubColor <QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>
-				
-				call VegaDivSub 400,<local.Y>,60,20
-				call VegaTrSubColor <QVAL (<Serv.Account.<local._for>.block>) ? 35:0>,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>
-				
+				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
+
+				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
+
+				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
+
+				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
+	
+				call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
+	
+				call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
+
 				call VegaDivSub 460,<local.Y>,100,20
 				button 464 <Eval <local.Y>+3> 5601 5605 1 0 <Eval 1000+<local._for>>
 				dtext 484 <Eval <local.Y>+2> 0 <Def.Vega_<Ref1.Tag0.Lang>_Manage>
@@ -79,23 +66,17 @@ else
 		if (<Serv.Account.<local._for>>)
 			local.Y = <Eval (<local.Y.Metric>*20)+30>
 			local.Pos = <Eval <local._for>+1>
-			call VegaDivSub 10,<local.Y>,40,20
-			call VegaTrSub <local.Pos>
-			
-			call VegaDivSub 50,<local.Y>,150,20
-			call VegaTrSub <Serv.Account.<local._for>.Name>
-			
-			call VegaDivSub 200,<local.Y>,100,20
-			call VegaTrSub <Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
-			
-			call VegaDivSub 300,<local.Y>,50,20
-			call VegaTrSub <Serv.Account.<local._for>.TagCount>
-			
-			call VegaDivSub 350,<local.Y>,50,20
-			call VegaTrSubColor <QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>
-			
-			call VegaDivSub 400,<local.Y>,60,20
-			call VegaTrSubColor <QVAL (<Serv.Account.<local._for>.block>) ? 35:0>,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>
+			call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
+
+			call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
+
+			call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> of <Serv.Account.<local._for>.MaxChars>
+
+			call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
+
+			call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
+
+			call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
 			
 			call VegaDivSub 460,<local.Y>,100,20
 			button 464 <Eval <local.Y>+3> 5601 5605 1 0 <Eval 1000+<local._for>>
@@ -106,8 +87,7 @@ else
 endif
 
 // Search Engine
-call VegaDiv 10,330,40,20
-call VegaTr <Def.Vega_<Ref1.Tag0.Lang>_Find>
+call VegaDiv 10,330,40,20,<Def.Vega_<Ref1.Tag0.Lang>_Find>
 call VegaDivSub 50,330,130,20
 call VegaDiv 180,330,20,20
 button 182 333 5601 5605 1 0 200
