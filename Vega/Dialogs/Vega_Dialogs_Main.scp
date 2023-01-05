@@ -99,6 +99,14 @@ ON=1000 1999 //Tab button
 	elif (<Argn1> == 1004) //items
 		src.dialogclose d_add
 		Src.add
+	elif (<Argn1> == 1005) //accounts
+		Src.Ctag0.VegaAccPage=
+		Src.Ctag0.VegaAccSearch =
+		Src.Ctag0.VegaSearch =
+		Src.DialogClose d_vega_server_accounts
+		Src.Dialog d_vega_server_accounts
+	elif (<Argn1> == 1006) //logs
+
 	endif
 
 ON=2000 2999 //Generic button
