@@ -141,15 +141,11 @@ ON=4000 4999 // Weather
 ON=5000 5999 // GameMaster
 	Src.Vega
 	if (<Argn1> == 5001) //invis
-		if (<src.flags>&statf_insubstantial) //FIX me, QVAL evaluation dont seem to work.... dont know why.
-			src.invis=0
-		else
-			src.invis=1
-		endif
+		src.invis=<QVAL <src.flags>&statf_insubstantial ? 0 : 1 >
 	elif (<Argn1> == 5002) //invul
-		<QVAL <src.flags>&statf_invul ? src.invul=0 : src.invul=1 >
+		src.invul=<QVAL <src.flags>&statf_invul ? 0 : 1 >
 	elif (<Argn1> == 5003) //Nightsight
-		<QVAL <src.nightsight> ? src.nightsight=0 : src.nightsight=1 >
+		src.nightsight=<QVAL <src.nightsight> ? 0 : 1 >
 	elif (<Argn1> == 5004) //Summon To ????
 		//???
 	elif (<Argn1> == 5005) //Page
