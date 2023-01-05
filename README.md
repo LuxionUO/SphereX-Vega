@@ -28,6 +28,10 @@ To open the assistant digit `.vega` or `.v` in game.
 ## Changelogs
 
 ```diff
++ 5 January 2023
+! 4:12am by Jhobean
+Added: Buttons functions for MainDialog
+Changed: Code optimization with "elif" instead of endif -> if
 + 4 January 2023
 ! 4:07pm by Luxion
 Added: FastSwitch for vCharInfo to see Owner vInfo
