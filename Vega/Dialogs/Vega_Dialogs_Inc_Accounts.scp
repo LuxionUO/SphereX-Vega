@@ -37,26 +37,30 @@ if (<Src.Ctag0.VegaSearch>)
 	local.VegaAccSearch = <Src.Ctag0.VegaAccSearch>
 	for <Src.Ctag0.VegaAccPage> <Eval <Src.Ctag0.VegaAccPage>+14>
 		if (<Serv.Account.<local._for>>)
-			if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
+			// if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
 				local.Y = <Eval (<local.Y.Metric>*20)+30>
 				local.Pos = <Eval <local._for>+1>
-				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
-
-				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
-
-				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
-
-				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
-	
+			if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
+				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>,63
+				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>,63
+				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>,63
+				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>,63
 				call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
-	
 				call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
-
 				call VegaDivSub 460,<local.Y>,100,20
+			else
+				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
+				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
+				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
+				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
+				call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
+				call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
+				call VegaDivSub 460,<local.Y>,100,20
+			endif
 				button 464 <Eval <local.Y>+3> 5601 5605 1 0 <Eval 1000+<local._for>>
 				dtext 484 <Eval <local.Y>+2> 0 <Def.Vega_<Ref1.Tag0.Lang>_Manage>
 				local.Y.Metric += 1
-			endif
+			// endif
 		endif
 	endfor
 	call VegaDiv 200,330,20,20
@@ -106,7 +110,8 @@ if !(<Src.Ctag0.VegaAccPage>)
 		local.PrintNextPage = 1
 	endif
 else
-	if (<Eval <Serv.Accounts>/(<Src.Ctag0.VegaAccPage>/15)> > 15)
+	serv.log <Eval <Serv.Accounts>/(<Src.Ctag0.VegaAccPage>/15)>
+	if (<Eval <Serv.Accounts>/((<Src.Ctag0.VegaAccPage>*2)/15)> > 15)
 		local.PrintNextPage = 1
 	endif
 endif
@@ -116,7 +121,11 @@ endif
 
 [DIALOG d_vega_server_accounts BUTTON]
 ON=100
-	Src.Ctag0.VegaAccPage -= 15
+	if (<Src.cTag0.VegaAccPage> < 1)
+		Src.cTag0.VegaAccPage =
+	else
+		Src.Ctag0.VegaAccPage -= 15
+	endif
 	Src.Dialog d_vega_server_accounts
 
 ON=101
@@ -127,7 +136,18 @@ ON=200 201
 	if (<Argn1> == 200)
 		Src.Ctag0.VegaSearch = 1
 		Src.Ctag0.VegaAccSearch = <ArgTxt[1]>
-		Src.Ctag0.VegaAccPage =
+		// <case> Move me to the right page
+		local.GetMeToPage = 0
+		for 0 <Eval <Serv.Accounts>-1>
+			if (<Serv.Account.<local._for>>)
+				if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
+					local.GetMeToPage = <Eval (<local._for>/15)+1>
+				endif
+			endif
+		endfor
+		// <break>
+		Src.Ctag0.VegaAccPage = <Eval (<local.GetMeToPage>-1)*15>
+		serv.log <local.getmetopage>
 	else
 		Src.Ctag0.VegaSearch = 
 		Src.Ctag0.VegaAccSearch = 
