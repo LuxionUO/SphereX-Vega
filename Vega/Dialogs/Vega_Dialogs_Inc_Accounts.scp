@@ -106,7 +106,7 @@ if !(<Src.Ctag0.VegaAccPage>)
 		local.PrintNextPage = 1
 	endif
 else
-	if (<Eval <Serv.Accounts>/<Src.Ctag0.VegaAccPage>> > 15)
+	if (<Eval <Serv.Accounts>/(<Src.Ctag0.VegaAccPage>/15)> > 15)
 		local.PrintNextPage = 1
 	endif
 endif
