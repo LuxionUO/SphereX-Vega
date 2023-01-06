@@ -12,4 +12,27 @@ Vega_Custom_ExpSystemTag					"" // For example if you use tag.exp to store exper
 Vega_Custom_IniInfoAccessPlevel				7 // Only owners can edit INI infos.
 Vega_Custom_AccessPlevel					4 // By default from Plevel 4, you can choose which Plevel is allowed.
 
+
+// Custom
+Vega_Custom_Custom					"Custom"
+Vega_Custom_1						"Custom1"
+Vega_Custom_2						"Custom2"
+Vega_Custom_3						"Custom3"
+Vega_Custom_4						"Custom4"
+Vega_Custom_5						"Custom5"
+Vega_Custom_6						"Custom6"
+
+[FUNCTION f_vega_custom1]
+return 1
+[FUNCTION f_vega_custom2]
+return 1
+[FUNCTION f_vega_custom3]
+return 1
+[FUNCTION f_vega_custom4]
+return 1
+[FUNCTION f_vega_custom5]
+return 1
+[FUNCTION f_vega_custom6]
+return 1
+
 [EOF]

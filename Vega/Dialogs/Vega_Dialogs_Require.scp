@@ -3,24 +3,24 @@
 // Author: Luxion
 
 [FUNCTION Vega_Contents_0]
+// ################### Generic SECTION  ################### 
 VegaDiv 10,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Information>,50
 
 for Information 1 6
 	local.Y = <Eval (<local.Information>*20)+60>
-	VegaDivEmpty 10,<local.Y>,20,20
+	VegaDiv 10,<local.Y>,20,20
 	VegaDivSub 30,<local.Y>,155,20,<Def0.Vega_Information_<Ref1.Tag0.Lang>_<local.Information>>
 	button 12 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 2000+<local.Information>>
 endfor
 
+// ################### MISC SECTION  ################### 
 VegaDiv 185,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Misc>,50
-
-
 local.X.Row = 185
 local.Y.Row = 1
 local.Row.Count = 0
 for Misc 1 12
 	local.Y = <Eval (<local.Y.Row>*20)+60>
-	VegaDivEmpty <local.X.Row>,<local.Y>,20,20
+	VegaDiv <local.X.Row>,<local.Y>,20,20
 	VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,75,20,<Def0.Vega_Misc_<Ref1.Tag0.Lang>_<local.Misc>>
 	button <Eval <local.X.Row>+2> <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 3000+<local.Misc>>
 	local.Row.Count += 1
@@ -32,38 +32,25 @@ for Misc 1 12
 	endif
 endfor
 
+// ################### WEATHER SECTION  ################### 
 VegaDiv 360,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Weather>,50
-
 for Weather 1 4
 	local.Y = <Eval (<local.Weather>*20)+60>
-	VegaDivEmpty 360,<local.Y>,20,20
+	VegaDiv 360,<local.Y>,20,20
 	VegaDivSub 380,<local.Y>,155,20,<Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>>
 	button 362 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 4000+<local.Weather>>
 endfor
 
 
-// DTEXT 370 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Weather>
-
-// for Weather 1 4
-	// local.Y = <Eval (<local.Weather>*22)+70>
-	// button 370 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 4000+<local.Weather>>
-	// if (<Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>) // Has custom color
-		// local.FontColor = <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>_Color>
-	// else
-		// local.FontColor = <Def0.Vega_Design_FontColorContent>
-	// endif
-	// dtext 395 <local.Y> <local.FontColor> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_<local.Weather>>
-// endfor
-
 // Light section
-VegaDivEmpty 360,<Eval <local.Y>+20>,20,20
+VegaDiv 360,<Eval <local.Y>+20>,20,20
 VegaBtnEmpty 360,<Eval <local.Y>+20>,2,100
-VegaDivEmpty 515,<Eval <local.Y>+20>,20,20
+VegaDiv 515,<Eval <local.Y>+20>,20,20
 VegaBtnEmpty 515,<Eval <local.Y>+20>,3,101
 
 VegaDiv 360,<Eval <local.Y>+40>,70,20,<Def0.Vega_Weather_<Ref1.Tag0.Lang>_SetLight>
 VegaDivSubEmpty 430,<Eval <local.Y>+40>,90,20
-VegaDivEmpty 515,<Eval <local.Y>+40>,20,20
+VegaDiv 515,<Eval <local.Y>+40>,20,20
 VegaBtnEmpty 515,<Eval <local.Y>+40>,0,102
 
 // Button 370 <Eval <local.Y>+25> 2435 2436 1 0 100
@@ -75,18 +62,18 @@ GumpPic <Eval 383+(<Src.Light>*4)-5> <Eval <local.Y>+24> 9022
 // Button 510 <Eval <local.Y>+25> 2437 2438 1 0 101
 // DTEXT 370 <Eval <local.Y>+45> <Def0.Vega_Design_FontColorContent> <Def0.Vega_Weather_<Ref1.Tag0.Lang>_SetLight>
 // GumpPic 430 <Eval <local.Y>+43> 2443
-DTEXTENTRYLIMITED 435 <Eval <local.Y>+42> 53 25 <Def0.Vega_Design_FontColorSuccess> 1 2 30
+DTEXTENTRYLIMITED 435 <Eval <local.Y>+42> 53 25 <Def0.Vega_Design_FontColorSuccess> 1 2 <eval <Src.light>>
 // Button 496 <Eval <local.Y>+43> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 102
 
-VegaDiv 535,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Discipline>,50
-
+// ################### GAMEMASTER SECTION  ################### 
+VegaDiv 535,60,175,20,<Def.Vega_<Ref1.Tag0.Lang>_GM>,50
 local.X.Row = 535
 local.Y.Row = 1
 local.Row.Count = 0
 for Discipline 1 12
 	local.Y = <Eval (<local.Y.Row>*20)+60>
-	VegaDivEmpty <local.X.Row>,<local.Y>,20,20
-	VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,68,20,<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
+	VegaDiv <local.X.Row>,<local.Y>,20,20
+	VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,68,20,<Def0.Vega_GM_<Ref1.Tag0.Lang>_<local.Discipline>>
 	button <Eval <local.X.Row>+2> <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
 	local.Row.Count += 1
 	local.Y.Row += 1
@@ -97,18 +84,38 @@ for Discipline 1 12
 	endif
 endfor
 
-// DTEXT 540 70 <Def0.Vega_Design_FontColorSubTitle> <Def.Vega_<Ref1.Tag0.Lang>_Discipline>
 
-// for Discipline 1 6
-	// local.Y = <Eval (<local.Discipline>*22)+70>
-	// button 540 <local.Y> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 5000+<local.Discipline>>
-	// if (<Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>) // Has custom color
-		// local.FontColor = <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>_Color>
-	// else
-		// local.FontColor = <Def0.Vega_Design_FontColorContent>
-	// endif
-	// dtext 565 <local.Y> <local.FontColor> <Def0.Vega_Discipline_<Ref1.Tag0.Lang>_<local.Discipline>>
-// endfor
+// ################### ADVANCE SECTION  ###################   
+if (<Src.Ctag0.VegaAdvanced>)
+	
+	//###Advanced
+	VegaDiv 10,270,175,20,<Def.Vega_<Ref1.Tag0.Lang>_Advanced>,50
+	local.X.Row = 10
+	local.Y.Row = 1
+	local.Row.Count = 0
+	for Advanced 1 12
+		local.Y = <Eval (<local.Y.Row>*20)+270>
+		VegaDiv <local.X.Row>,<local.Y>,20,20
+		VegaDivSub <Eval <local.X.Row>+20>,<local.Y>,75,20,<Def0.Vega_Advanced_<Ref1.Tag0.Lang>_<local.Advanced>>,<QVAL <src.<Def0.Vega_Advanced_<Ref1.Tag0.Lang>_<local.Advanced>_color>==1> ? 0: 63>
+		button <Eval <local.X.Row>+2> <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 6000+<local.Advanced>>
+		local.Row.Count += 1
+		local.Y.Row += 1
+		if (<local.Row.Count> == 6)
+			local.X.Row += 87
+			local.Row.Count = 0
+			local.Y.Row = 1
+		endif
+	endfor
+
+	//###Custom
+	VegaDiv 185,270,175,20,<Def.Vega_Custom_Custom>,50
+	for Custom 1 6
+		local.Y = <Eval (<local.Custom>*20)+270>
+		VegaDiv 185,<local.Y>,20,20
+		VegaDivSub 205,<local.Y>,155,20,<Def0.Vega_Custom_<local.Custom>>
+		button 187 <Eval <local.Y>+3> <Def0.Vega_Design_WhiteBtnOff> <Def0.Vega_Design_WhiteBtnOn> 1 0 <Eval 6100+<local.Custom>>
+	endfor
+endif
 
 
 

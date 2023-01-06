@@ -19,15 +19,15 @@ local.WPX = <Eval (<local.Width>/2)-(<local.WX>/2)>
 local.WPY = <Eval 0-(<local.WY>/2)>
 // <close> Setup
 
-call VegaInit 720,250
+call VegaInit 720,<QVAL <Src.Ctag0.VegaAdvanced>? 420 : 280 >
 call VegaDiv 10,10,675,20,<Def.Vega_Lang_<Ref1.Tag0.Lang>_Title>,48
 
-call VegaDivEmpty 690,10,20,20
+call VegaDiv 690,10,20,20
 button 692 13 5602 5606 1 0 0
 
 for 0 <Eval <Def0.Vega_Tabs_Total>-1>
 	local.X = <Eval (<local._for>*100)+10>
-	call VegaDivEmpty <local.X>,35,20,20
+	call VegaDiv <local.X>,35,20,20
 	button <eval <local.x>+2> 38 5601 5605 1 0 <Eval 1000+<local._for>>
 	if (<Ref1.Tag0.CurTab> == <local._for>)
 		VegaDivSub <Eval <local.X>+20>,35,80,20,<Def.Vega_Tabs_<Ref1.Tag0.Lang>_<local._for>_Name>,63
@@ -40,13 +40,17 @@ CALL Vega_Contents_<Ref1.Tag0.CurTab>
 
 // Tool options
 VegaDiv 10,205,700,20,Options
-VegaDivEmpty 10,225,20,20
+VegaDiv 10,225,20,20
 VegaBtnEmpty 10,225,0,200
 VegaDivSub 30,225,100,20,Transparent
 
 if (<Src.Ctag0.VegaTransparent>)
 	Checkertrans 0 0 720 250
 endif
+
+VegaDiv 10,250,20,20
+VegaBtnEmpty 10,250,<QVAL <Src.Ctag0.VegaAdvanced>? 3 : 0 >,210
+VegaDiv 30,250,680,20,Advanced
 
 // Button controls
 
@@ -81,12 +85,12 @@ ON=100 102
 	endif
 	Src.Vega
 	
-ON=200
-	if (<Src.Ctag0.VegaTransparent>)
-		Src.Ctag0.VegaTransparent=
-	else
-		Src.Ctag0.VegaTransparent=1
-	endif
+ON=200 //Transparent
+	Src.Ctag0.VegaTransparent= <QVAL <Src.Ctag0.VegaTransparent> ? : 1>
+	Src.Vega
+
+ON=210 //Advanced
+	Src.Ctag0.VegaAdvanced= <QVAL <Src.Ctag0.VegaAdvanced> ? : 1>
 	Src.Vega
 
 ON=1000 1999 //Tab button
@@ -106,7 +110,7 @@ ON=1000 1999 //Tab button
 		Src.DialogClose d_vega_server_accounts
 		Src.Dialog d_vega_server_accounts
 	elif (<Argn1> == 1006) //logs
-
+		src.vservlog
 	endif
 
 ON=2000 2999 //Generic button
@@ -138,13 +142,30 @@ ON=3000 3999 // Misc Button
 
 	elif (<Argn1> == 3003) //flip
 		src.xflip
+	elif (<Argn1> == 3004) //Dupe
+	elif (<Argn1> == 3005) //Remove
+	elif (<Argn1> == 3006) //Nuke		
 	elif (<Argn1> == 3007) //supertele
 		src.dialogclose d_lux_vega //If stay open, impossible to cancel supertele
 		src.t
+	elif (<Argn1> == 3008) //SuperMove
+	elif (<Argn1> == 3009) //Shrink
+	elif (<Argn1> == 3010) //AllShow
+	elif (<Argn1> == 3011) //SuperRemove
+	elif (<Argn1> == 3012) //HearAll	
 	endif
 
 ON=4000 4999 // Weather
 	Src.Vega
+	if (<Argn1> == 4001) //Snow
+
+	elif (<Argn1> == 4002) //Rain
+
+	elif (<Argn1> == 4003) //Dry
+
+	elif (<Argn1> == 4004) //Light Level
+		src.sysmessage Light: <EVAL <src.light>>/30
+	endif
 
 ON=5000 5999 // GameMaster
 	Src.Vega
@@ -160,8 +181,8 @@ ON=5000 5999 // GameMaster
 		src.page
 	elif (<Argn1> == 5006) //Jail
 		src.xjail
-	elif (<Argn1> == 5007) //Forgive
-		src.xforgive
+	elif (<Argn1> == 5007) //Free
+
 	elif (<Argn1> == 5008) //Kill
 		src.xkill
 	elif (<Argn1> == 5009) //Disconnect
@@ -170,8 +191,52 @@ ON=5000 5999 // GameMaster
 		src.xresurrect
 	elif (<Argn1> == 5011) //Ban
 		src.xban
-	elif (<Argn1> == 5012) //Other
-		//Open other dialog
+	elif (<Argn1> == 5012) //Forgive
+		src.xforgive
+	endif
+
+ON=6000 6099 // Advanced
+	Src.Vega
+	//Debug, speed, link, help
+	if (<Argn1> == 6001) //Speed
+		IF (<src.speedmode>==1)
+			src.sysmessage Normal mode
+			src.speedmode=0
+		Else 
+			src.sysmessage Speed mode
+			src.speedmode=1
+		Endif
+
+	elif (<Argn1> == 6002) //Link
+	
+	elif (<Argn1> == 6003) //Debug
+		src.debug=<QVAL <src.debug> ? 0 : 1 >
+	elif (<Argn1> == 6004) //Free1
+	elif (<Argn1> == 6005) //Free2
+	elif (<Argn1> == 6006) //Free3
+	elif (<Argn1> == 6007) //Free4
+	elif (<Argn1> == 6008) //Free5
+	elif (<Argn1> == 6009) //Free6
+	elif (<Argn1> == 6010) //Free7
+	elif (<Argn1> == 6011) //Free8
+	elif (<Argn1> == 6012) //Free9
+	endif
+
+ON=6100 6199 // Custom
+	Src.Vega
+	//Debug, speed, link, help
+	if (<Argn1> == 6101) //Custom1
+		src.f_vega_custom1
+	elif (<Argn1> == 6102) //Custom2
+		src.f_vega_custom2
+	elif (<Argn1> == 6103) //Custom3
+		src.f_vega_custom3
+	elif (<Argn1> == 6104) //Custom4
+		src.f_vega_custom4
+	elif (<Argn1> == 6105) //Custom5
+		src.f_vega_custom5
+	elif (<Argn1> == 6106) //Custom6
+		src.f_vega_custom6
 	endif
 
 [EOF]
