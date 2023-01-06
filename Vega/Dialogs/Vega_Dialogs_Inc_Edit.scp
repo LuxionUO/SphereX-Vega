@@ -34,7 +34,7 @@ local.WPY = 0
 RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
 
 VegaDiv 10,10,405,20,Vega Edit for <Ref2.Name>,48
-VegaDivEmpty 420,10,20,20
+VegaDiv 420,10,20,20
 VegaBtnEmpty 420,10,3,0
 
 VegaDiv 10,35,175,20,Item,50
@@ -56,19 +56,19 @@ for <Src.Ctag0.vEditPage> <QVAL (<Eval <Ref2.Count>-<Src.Ctag0.vEditPage>> > 9) 
 		VegaDivSub 10,<local.Y>,175,20,<Ref2.FindCont.<local._for>.Name>
 		VegaDivSub 185,<local.Y>,40,20,<Ref2.FindCont.<local._for>.Timer>
 		VegaDivSub 225,<local.Y>,190,20,<Ref2.FindCont.<local._for>.Type>
-		VegaDivEmpty 420,<local.Y>,20,20
+		VegaDiv 420,<local.Y>,20,20
 		VegaBtnEmpty 420,<local.Y>,0,<Eval 1000+<local._for>>
 		local.Metric += 1
 	endif
 endfor
 
-VegaDivEmpty 10,260,20,20
+VegaDiv 10,260,20,20
 if (<Src.Ctag0.vEditPage>)
 	VegaBtnEmpty 10,260,1,100
 endif
 VegaDivSubEmpty 30,260,50,20
 dHtmlGump 30 262 50 20 0 0 <def.center><Eval (<Src.Ctag0.vEditPage>/9)+1>/<Eval (<Ref2.Count>/9)+1>
-VegaDivEmpty 80,260,20,20
+VegaDiv 80,260,20,20
 if (<Eval (<Ref2.Count>-<Src.Ctag0.vEditPage>)> > 10)
 	VegaBtnEmpty 80,260,0,101
 endif

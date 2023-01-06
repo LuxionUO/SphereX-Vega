@@ -127,26 +127,6 @@ if (<local.Border>)
 	dText <Eval <local.X>+4> <Eval <local.Y>+2> <local.FontColor> <local.String>
 endif
 
-[FUNCTION VegaDivEmpty]
-local.X = <Argv[0]>
-local.Y = <Argv[1]>
-local.Width = <Argv[2]>
-local.Height = <Argv[3]>
-local.Border = 1
-if (<local.Override.FontColor>)
-	local.FontColor = <local.Override.FontColor>
-else
-	local.FontColor = 2048
-endif
-// Borders
-if (<local.Border>)
-	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
-	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
-	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
-	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
-	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3604
-endif
-
 [FUNCTION VegaHelp]
 local.X = <Argv[0]>
 local.Y = <Argv[1]>

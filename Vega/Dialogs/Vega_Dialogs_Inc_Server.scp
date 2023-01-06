@@ -38,7 +38,7 @@ VegaDivSub 210,110,480,20,<FormatSecondes <Serv.Timeup>>
 
 VegaServerPage_<Src.Ctag0.VegaServerPage>
 
-VegaDivEmpty 520,470,20,20
+VegaDiv 520,470,20,20
 if (<Src.Ctag0.VegaServerPage>)
 	VegaBtnEmpty 520,470,1,100
 endif
@@ -46,7 +46,7 @@ endif
 VegaDivSubEmpty 540,470,130,20
 dHtmlGump 540 471 130 25 0 0 <def.center><def.bFont_Black>Page <Eval <Src.Ctag0.VegaServerPage>+1>/<Def0.VegaServer_Pages>
 
-VegaDivEmpty 670,470,20,20
+VegaDiv 670,470,20,20
 if (<Src.Ctag0.VegaServerPage> < <Eval <Def0.VegaServer_Pages>-1>)
 	VegaBtnEmpty 670,470,0,101
 endif

@@ -35,7 +35,7 @@ local.WPY = 0
 RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
 
 VegaDiv 10,10,555,20,Vega Info for <Ref2.Name>,48
-VegaDivEmpty 570,10,20,20
+VegaDiv 570,10,20,20
 VegaBtnEmpty 570,10,3,0
 
 VegaDiv 10,35,120,20,Icon,50
@@ -118,133 +118,133 @@ ON=100 199
 	
 [FUNCTION vInfo_Menu_Player]
 	local.y = 180
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,100
 	VegaDivSub 30,<local.y>,100,20,General
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,101
 	VegaDivSub 30,<local.y>,100,20,Stats
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,102
 	VegaDivSub 30,<local.y>,100,20,Skills
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,103
 	VegaDivSub 30,<local.y>,100,20,Flags
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,104
 	VegaDivSub 30,<local.y>,100,20,Tags
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,105
 	VegaDivSub 30,<local.y>,100,20,Events
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,106
 	VegaDivSub 30,<local.y>,100,20,Followers
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,107
 	VegaDivSub 30,<local.y>,100,20,Ships
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,108
 	VegaDivSub 30,<local.y>,100,20,Houses
 
 [FUNCTION vInfo_Menu_Vendor]
-	VegaDivEmpty 10,180,20,20
+	VegaDiv 10,180,20,20
 	VegaBtn 10,180,0,100
 	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
+	VegaDiv 10,200,20,20
 	VegaBtn 10,200,0,101
 	VegaDivSub 30,200,100,20,Skills
-	VegaDivEmpty 10,220,20,20
+	VegaDiv 10,220,20,20
 	VegaBtn 10,220,0,102
 	VegaDivSub 30,220,100,20,Flags
-	VegaDivEmpty 10,240,20,20
+	VegaDiv 10,240,20,20
 	VegaBtn 10,240,0,103
 	VegaDivSub 30,240,100,20,Tags
-	VegaDivEmpty 10,260,20,20
+	VegaDiv 10,260,20,20
 	VegaBtn 10,260,0,104
 	VegaDivSub 30,260,100,20,Events
-	VegaDivEmpty 10,280,20,20
+	VegaDiv 10,280,20,20
 	VegaBtn 10,280,0,105
 	VegaDivSub 30,280,100,20,Items Selling
-	VegaDivEmpty 10,300,20,20
+	VegaDiv 10,300,20,20
 	VegaBtn 10,300,0,106
 	VegaDivSub 30,300,100,20,Items Buying
-	VegaDivEmpty 10,320,20,20
+	VegaDiv 10,320,20,20
 	VegaBtn 10,320,0,107
 	VegaDivSub 30,320,100,20,Stock
 
 [FUNCTION vInfo_Menu_Armor]
-	VegaDivEmpty 10,180,20,20
+	VegaDiv 10,180,20,20
 	VegaBtn 10,180,0,100
 	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
+	VegaDiv 10,200,20,20
 	VegaBtn 10,200,0,101
 	VegaDivSub 30,200,100,20,Flags
-	VegaDivEmpty 10,220,20,20
+	VegaDiv 10,220,20,20
 	VegaBtn 10,220,0,102
 	VegaDivSub 30,220,100,20,Tags
-	VegaDivEmpty 10,240,20,20
+	VegaDiv 10,240,20,20
 	VegaBtn 10,240,0,103
 	VegaDivSub 30,240,100,20,Events
 
 [FUNCTION vInfo_Menu_Weapon]
-	VegaDivEmpty 10,180,20,20
+	VegaDiv 10,180,20,20
 	VegaBtn 10,180,0,100
 	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
+	VegaDiv 10,200,20,20
 	VegaBtn 10,200,0,101
 	VegaDivSub 30,200,100,20,Flags
-	VegaDivEmpty 10,220,20,20
+	VegaDiv 10,220,20,20
 	VegaBtn 10,220,0,102
 	VegaDivSub 30,220,100,20,Tags
-	VegaDivEmpty 10,240,20,20
+	VegaDiv 10,240,20,20
 	VegaBtn 10,240,0,103
 	VegaDivSub 30,240,100,20,Events
 
 [FUNCTION vInfo_Menu_Item]
-	VegaDivEmpty 10,180,20,20
+	VegaDiv 10,180,20,20
 	VegaBtn 10,180,0,100
 	VegaDivSub 30,180,100,20,Props
-	VegaDivEmpty 10,200,20,20
+	VegaDiv 10,200,20,20
 	VegaBtn 10,200,0,101
 	VegaDivSub 30,200,100,20,Flags
-	VegaDivEmpty 10,220,20,20
+	VegaDiv 10,220,20,20
 	VegaBtn 10,220,0,102
 	VegaDivSub 30,220,100,20,Tags
-	VegaDivEmpty 10,240,20,20
+	VegaDiv 10,240,20,20
 	VegaBtn 10,240,0,103
 	VegaDivSub 30,240,100,20,Events
 
 [FUNCTION vInfo_Menu_Char]
 	local.y = 180
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,100
 	VegaDivSub 30,<local.y>,100,20,General
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,101
 	VegaDivSub 30,<local.y>,100,20,Stats
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,102
 	VegaDivSub 30,<local.y>,100,20,Skills
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,103
 	VegaDivSub 30,<local.y>,100,20,Flags
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,104
 	VegaDivSub 30,<local.y>,100,20,Tags
 	local.y += 20
-	VegaDivEmpty 10,<local.y>,20,20
+	VegaDiv 10,<local.y>,20,20
 	VegaBtn 10,<local.y>,0,105
 	VegaDivSub 30,<local.y>,100,20,Events
 	
@@ -305,13 +305,13 @@ ON=100 199
 	local.X.Origin += 25
 	VegaDivSub 365,<local.X.Origin>,100,20,Equipped Items
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Count>
-	VegaDivEmpty 570,<local.X.Origin>,20,20
+	VegaDiv 570,<local.X.Origin>,20,20
 	VegaBtnEmpty 570,<local.X.Origin>,0,200
 	local.X.Origin += 20
 	VegaDivSub 365,<local.X.Origin>,100,20,Mount
 	if (<Ref2.FindLayer.Layer_Horse.IsValid>)
 		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Serv.Uid.<Ref2.FindLayer.Layer_Horse.More2>.Name>
-		VegaDivEmpty 570,<local.X.Origin>,20,20
+		VegaDiv 570,<local.X.Origin>,20,20
 		VegaBtnEmpty 570,<local.X.Origin>,0,206
 	else
 		VegaDivSubTrunc 465,<local.X.Origin>,125,20,None,35
@@ -434,7 +434,7 @@ ON=100 199
 					local.Y.Row += 20
 					VegaDivSub <local.X.Row>,<local.Y.Row>,150,20,<Serv.Skill.<local._for>.Key>
 					VegaDivSub <Eval <local.X.Row>+150>,<local.Y.Row>,75,20,<fVal <Ref2.<local._for>>>
-					VegaDivEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
+					VegaDiv <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
 					VegaBtnEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,0,<Eval 5000+<local._for>>
 					if (<local.Row> == 14)
 						local.Y.Row = 35
@@ -451,7 +451,7 @@ ON=100 199
 				local.Y.Row += 20
 				VegaDivSub <local.X.Row>,<local.Y.Row>,150,20,<Serv.Skill.<local._for>.Key>
 				VegaDivSub <Eval <local.X.Row>+150>,<local.Y.Row>,75,20,<fVal <Ref2.<local._for>>>
-				VegaDivEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
+				VegaDiv <Eval <local.X.Row>+205>,<local.Y.Row>,20,20
 				VegaBtnEmpty <Eval <local.X.Row>+205>,<local.Y.Row>,0,<Eval 5000+<local._for>>
 				if (<local.Row> == 14)
 					local.Y.Row = 35
@@ -462,12 +462,12 @@ ON=100 199
 		endfor
 	endif
 	
-	VegaDivEmpty 135,340,20,20
+	VegaDiv 135,340,20,20
 	if (<Src.cTag0.vSkillIndex>)
 		VegaBtnEmpty 135,340,1,300
 	endif
 	
-	VegaDivEmpty 155,340,20,20
+	VegaDiv 155,340,20,20
 	if (<Eval (<Def0.Vega_Custom_Skills>-<Src.Ctag0.vSkillIndex>)> > 28)
 		VegaBtnEmpty 155,340,0,301
 	endif
@@ -476,17 +476,17 @@ ON=100 199
 	VegaDiv 180,340,30,20,Find
 	VegaDivSubEmpty 210,340,130,20
 	dTextEntryLimited 212 342 120 20 65 1 16
-	VegaDivEmpty 340,340,20,20
+	VegaDiv 340,340,20,20
 	VegaBtnEmpty 340,340,0,500
 	if (<Src.cTag0.vSkillFind>)
-		VegaDivEmpty 360,340,20,20
+		VegaDiv 360,340,20,20
 		VegaBtnEmpty 360,340,1,501 // Clear Search
 	endif
 	
 	VegaDiv 400,340,95,20,Set All Skills
 	VegaDivSubEmpty 495,340,75,20
 	dTextEntryLimited 497 342 75 20 65 2 4
-	VegaDivEmpty 570,340,20,20
+	VegaDiv 570,340,20,20
 	VegaBtnEmpty 570,340,0,502 // Set all skills
 	
 [FUNCTION vInfo_Page_Char_0]
@@ -529,7 +529,7 @@ ON=100 199
 	local.X.Origin += 25
 	VegaDivSub 365,<local.X.Origin>,100,20,Equipped Items
 	VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Count>
-	VegaDivEmpty 570,<local.X.Origin>,20,20
+	VegaDiv 570,<local.X.Origin>,20,20
 	VegaBtnEmpty 570,<local.X.Origin>,0,200
 	local.X.Origin += 25
 	VegaDivSub 365,<local.X.Origin>,100,20,Gold Backpack
@@ -544,7 +544,7 @@ ON=100 199
 	VegaDivSub 365,<local.X.Origin>,100,20,Owner
 	IF (<Ref2.Owner>)
   		VegaDivSubTrunc 465,<local.X.Origin>,125,20,<Ref2.Owner.Name>
-		VegaDivEmpty 570,<local.X.Origin>,20,20
+		VegaDiv 570,<local.X.Origin>,20,20
 		VegaBtnEmpty 570,<local.X.Origin>,0,205 // Recall Owner InfoPage
 	else
 		VegaDivSubTrunc 465,<local.X.Origin>,125,20,N/A
