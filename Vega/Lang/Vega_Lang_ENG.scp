@@ -66,6 +66,9 @@ Vega_ENG_Access								"Access"
 Vega_ENG_Manage								"Manage"
 Vega_ENG_Find								"Find"
 Vega_ENG_Search								"Search"
+Vega_ENG_CreateAccount						"Register a New Account"
+Vega_ENG_Create								"Create"
+Vega_ENG_Delete								"Delete"
 
 // Information
 Vega_Information_ENG_1						"Admin"

@@ -71,6 +71,32 @@ if (<local.Border>)
 	dText <Eval <local.X>+4> <Eval <local.Y>+2> <local.FontColor> <local.String>
 endif
 
+[FUNCTION VegaTextarea]
+local.X = <Argv[0]>
+local.Y = <Argv[1]>
+local.Width = <Argv[2]>
+local.Height = <Argv[3]>
+local.FontColor = <Argv[4]>
+local.TextID = <Argv[5]>
+local.Limit = <Argv[6]>
+local.String = "<Argv[7]>"
+local.Border = 1
+// Limit check
+if (<local.Limit>)
+	local.SetLimit = <local.Limit>
+else
+	local.SetLimit = 999
+endif
+// Borders
+if (<local.Border>)
+	GumpPicTiled <local.X> <local.Y> <local.Width> <local.Border> 2702
+	GumpPicTiled <local.X> <local.Y> <local.Border> <local.Height> 2702
+	GumpPicTiled <eval <local.Width>+<local.X>> <Eval <local.Y>+1> <local.Border> <local.Height> 2702
+	GumpPicTiled <local.X> <eval <local.Height>+<local.Y>> <local.Width> <local.Border> 2702
+	GumpPicTiled <Eval <local.X>+<local.Border>> <Eval <local.Y>+<local.Border>> <Eval <local.Width>-1> <Eval <local.Height>-1> 3004
+	dTextEntryLimited <Eval <local.X>+4> <Eval <local.Y>+2> <Eval <local.Width>-10> <Eval <local.Height>> <local.FontColor> <local.TextID> <local.SetLimit> <local.String>
+endif
+
 [FUNCTION VegaDivSubTrunc]
 local.X = <Argv[0]>
 local.Y = <Argv[1]>
@@ -155,8 +181,10 @@ DTEXT <Eval <local.X>+4> <Eval <local.Y>+2> <Argv[0]> <Argv[1]>
 [FUNCTION VegaBtn]
 local.X = <Argv[0]>
 local.Y = <Argv[1]>
+local.FontColor = <Argv[4]>
+local.String = "<Argv[2]>"
 BUTTON <Eval <local.X>+2> <Eval <local.Y>+3> 5601 5605 1 0 <Argv[3]>
-DTEXT <Eval <local.X>+23> <Eval <local.Y>+2> 0 <Argv[2]>
+DTEXT <Eval <local.X>+23> <Eval <local.Y>+2> <local.FontColor> <local.String>
 
 [FUNCTION VegaBtnEmpty]
 local.X = <Argv[0]>

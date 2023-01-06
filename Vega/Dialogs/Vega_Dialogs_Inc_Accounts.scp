@@ -118,6 +118,16 @@ endif
 if (<local.PrintNextPage>)
 	button 542 333 5601 5605 1 0 101
 endif
+// Create a new account
+VegaDiv 10,358,230,20,<Def.Vega_<Ref1.Tag0.Lang>_CreateAccount>,63
+VegaDiv 10,378,90,20,Username,50
+VegaTextarea 100,378,100,20,53,2,14
+VegaDiv 200,378,90,20,Password,50
+VegaTextarea 290,378,100,20,53,3,14
+VegaDiv 390,378,50,20,Plevel,50
+VegaTextarea 440,378,30,20,53,4,1,1
+VegaDiv 470,378,90,20
+VegaBtn 470,378,<Def.Vega_<Ref1.Tag0.Lang>_Create>,500,63
 
 [DIALOG d_vega_server_accounts BUTTON]
 ON=100
@@ -152,6 +162,27 @@ ON=200 201
 		Src.Ctag0.VegaSearch = 
 		Src.Ctag0.VegaAccSearch = 
 		Src.Ctag0.VegaAccPage =
+	endif
+	Src.Dialog d_vega_server_accounts
+	
+ON=500
+	local.Account = <ArgTxt[2]>
+	local.Password = <Argtxt[3]>
+	local.Plevel = <Argtxt[4]>
+	if (<Src.Account.Plevel> > 5)
+		if (<local.Plevel> > 4)
+			Src.Sysmessage @33,,1 [Security] You can create an account up to plevel 4, to highest plevel user .serv.account
+		else
+			if !(<Serv.Account.<local.Account>>)
+				Serv.Account Add <local.Account> <local.Password>
+				Serv.Account <local.Account> plevel <local.Plevel>
+				Src.Sysmessage Account '<local.Account>' created successfully.
+			else
+				Src.Sysmessage @33,,1 Account '<local.Account>' already exists.
+			endif
+		endif
+	else
+		Src.Sysmessage @33,,1 [Security] You don't have the privileges to do that.
 	endif
 	Src.Dialog d_vega_server_accounts
 
