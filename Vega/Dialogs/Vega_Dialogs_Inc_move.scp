@@ -1,0 +1,155 @@
+[FUNCTION f_SuperMove]
+tag.SuperMove=
+dialogclose=d_SuperMove
+newitem=i_SuperMove
+new.equip
+
+[ITEMDEF i_SuperMove]
+ID=i_memory
+NAME=Super-Edit
+TYPE=t_eq_script
+
+ON=@Equip
+	TARGET
+	src.sysmessage Choose target
+
+ON=@TargOn_Ground
+	Remove
+	Return 1
+
+ON=@TargOn_Char
+	Remove
+	Return 1
+
+ON=@TargOn_Item
+	//src.positiv <ARGO.name> ausgewaehlt! Edit-Menu erscheint
+	src.tag.SuperMove=<ARGO.uid>
+	//uid.<src.tag.SuperMove>.entdeckt2 <src>
+	src.dialog=d_SuperMove
+	Remove
+	Return 1
+
+ON=@TargOn_Cancel
+	Remove
+	Return 1
+
+[DIALOG d_SuperMove]
+200,200
+resizepic 0 0 5054 260 200
+checkertrans 1 1 258 198
+resizepic 5 5 5054 250 20
+dtext 9 5 955 Target:
+button 45 7 5601 5605 1 0 19
+dtext 63 5 52 Change
+button 110 7 5601 5605 1 0 1
+dtext 130 5 67 Info
+button 175 7 5601 5605 1 0 18
+dtext 195 5 37 Delete!
+resizepic 5 30 5054 80 140
+checkertrans 6 31 78 138
+button 30 32 5600 5604 1 0 2
+button 30 52 5600 5604 1 0 3
+button 30 72 5600 5604 1 0 4
+dtext 20 90 955 Up/Down
+button 30 112 5602 5606 1 0 5
+button 30 132 5602 5606 1 0 6
+button 30 152 5602 5606 1 0 7
+dtext 15 30 1038 5
+dtext 15 50 1038 3
+dtext 15 70 1038 1
+dtext 15 110 1038 1
+dtext 15 130 1038 3
+dtext 15 150 1038 5
+resizepic 90 30 5054 165 20
+checkertrans 91 31 163 18
+button 95 32 5601 5605 1 0 8
+dtext 115 30 955 Ground Level!
+button 195 32 5601 5605 1 0 9
+dtext 215 30 955 Flip!
+dtext 145 104 955 XMOVE
+button 90 50 4507 4507 1 0 10
+button 140 50 4500 4500 1 0 11
+button 190 50 4501 4501 1 0 12
+button 90 90 4506 4506 1 0 13
+button 190 90 4502 4502 1 0 14
+button 90 130 4505 4505 1 0 15
+button 140 130 4504 4504 1 0 16
+button 190 130 4503 4503 1 0 17
+
+dtext 128 178 955 DUPE+SuperMove
+button 235 183 2103 2104 1 0 20
+
+resizepic 5 175 5054 120 20
+dtext 10 175 955 Right-click = End
+
+[DIALOG d_SuperMove BUTTON]
+ONBUTTON=0
+	src.Sysmessage SuperModif Cancel
+	src.tag.SuperMove=
+ONBUTTON=1
+	src.vinfo <src.tag.SuperMove>
+	src.dialog=d_SuperMove
+ONBUTTON=2
+	uid.<src.tag.SuperMove>.move 0,0,5
+	src.dialog=d_SuperMove
+ONBUTTON=3
+	uid.<src.tag.SuperMove>.move 0,0,3
+	src.dialog=d_SuperMove
+ONBUTTON=4
+	uid.<src.tag.SuperMove>.move 0,0,1
+	src.dialog=d_SuperMove
+ONBUTTON=5
+	uid.<src.tag.SuperMove>.move 0,0,-1
+	src.dialog=d_SuperMove
+ONBUTTON=6
+	uid.<src.tag.SuperMove>.move 0,0,-3
+	src.dialog=d_SuperMove
+ONBUTTON=7
+	uid.<src.tag.SuperMove>.move 0,0,-5
+	src.dialog=d_SuperMove
+ONBUTTON=8
+	uid.<src.tag.SuperMove>.fix
+	src.dialog=d_SuperMove
+ONBUTTON=9
+	uid.<src.tag.SuperMove>.flip
+	src.dialog=d_SuperMove
+ONBUTTON=10
+	uid.<src.tag.SuperMove>.move -1,0
+	src.dialog=d_SuperMove
+ONBUTTON=11
+	uid.<src.tag.SuperMove>.move -1,-1
+	src.dialog=d_SuperMove
+ONBUTTON=12
+	uid.<src.tag.SuperMove>.move 0,-1
+	src.dialog=d_SuperMove
+ONBUTTON=13
+	uid.<src.tag.SuperMove>.move -1,1
+	src.dialog=d_SuperMove
+ONBUTTON=14
+	uid.<src.tag.SuperMove>.move 1,-1
+	src.dialog=d_SuperMove
+ONBUTTON=15
+	uid.<src.tag.SuperMove>.move 0,1
+	src.dialog=d_SuperMove
+ONBUTTON=16
+	uid.<src.tag.SuperMove>.move 1,1
+	src.dialog=d_SuperMove
+ONBUTTON=17
+	uid.<src.tag.SuperMove>.move 1,0
+	src.dialog=d_SuperMove
+ONBUTTON=18
+	uid.<src.tag.SuperMove>.remove
+	src.Sysmessage Item deleted!
+ONBUTTON=19
+	src.newitem=i_SuperMove
+	src.new.equip
+
+ONBUTTON=20
+    newitem=<uid.<src.tag.SuperMove>.baseid>
+    new.color=<uid.<src.tag.SuperMove>.color>
+    new.name=<uid.<src.tag.SuperMove>.name>
+    new.p=<uid.<src.tag.SuperMove>.p>
+    src.sysmessage Item duped and now target
+    src.dialog=d_SuperMove
+
+[EOF]

@@ -59,14 +59,14 @@ endif
 
 if (<Ref2.IsPlayer>)
 	call vInfo_Page_Player_<Src.Ctag0.vInfoPage>
-elseif (<Ref2.IsVendor>)
-	call vInfo_Page_Vendor
 elseif (<Ref2.IsArmor>)
 	call vInfo_Page_Armor
 elseif (<Ref2.IsWeapon>)
 	call vInfo_Page_Weapon
 elseif (<Ref2.IsItem>)
 	call vInfo_Page_Item
+elseif (<Ref2.IsVendor>)
+	call vInfo_Page_Vendor
 elseif (<Ref2.IsChar>)
 	call vInfo_Page_Char_<Src.Ctag0.vInfoPage>
 endif

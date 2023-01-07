@@ -143,16 +143,25 @@ ON=3000 3999 // Misc Button
 	elif (<Argn1> == 3003) //flip
 		src.xflip
 	elif (<Argn1> == 3004) //Dupe
+		src.xdupe
 	elif (<Argn1> == 3005) //Remove
-	elif (<Argn1> == 3006) //Nuke		
+		src.xremove
+	elif (<Argn1> == 3006) //Nuke	
+		src.xnuke	
 	elif (<Argn1> == 3007) //supertele
 		src.dialogclose d_lux_vega //If stay open, impossible to cancel supertele
 		src.t
 	elif (<Argn1> == 3008) //SuperMove
+		src.dialogclose d_lux_vega
+		src.f_SuperMove
 	elif (<Argn1> == 3009) //Shrink
+		src.xshrink
 	elif (<Argn1> == 3010) //AllShow
+		src.allshow=<QVAL <src.allshow> ? 0 : 1 >
 	elif (<Argn1> == 3011) //SuperRemove
+		//todo
 	elif (<Argn1> == 3012) //HearAll	
+		src.Hearall=<QVAL <src.Hearall> ? 0 : 1 >
 	endif
 
 ON=4000 4999 // Weather
