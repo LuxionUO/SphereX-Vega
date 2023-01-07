@@ -190,8 +190,8 @@ ON=5000 5999 // GameMaster
 		src.page
 	elif (<Argn1> == 5006) //Jail
 		src.xjail
-	elif (<Argn1> == 5007) //Free
-
+	elif (<Argn1> == 5007) //GM
+		src.gm
 	elif (<Argn1> == 5008) //Kill
 		src.xkill
 	elif (<Argn1> == 5009) //Disconnect
