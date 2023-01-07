@@ -18,13 +18,15 @@ local.WPY = 0
 
 RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
 
-call VegaDiv 10,10,40,20,#
+call VegaDiv 10,10,35,20,#
 
-call VegaDiv 50,10,150,20,<Def0.Vega_<Ref1.Tag0.Lang>_AccountName>
+call VegaDiv 45,10,40,20,Plevel
 
-call VegaDiv 200,10,100,20,<Def0.Vega_<Ref1.Tag0.Lang>_Chars>
+call VegaDiv 85,10,150,20,<Def0.Vega_<Ref1.Tag0.Lang>_AccountName>
 
-call VegaDiv 300,10,50,20,Tags
+call VegaDiv 235,10,80,20,<Def0.Vega_<Ref1.Tag0.Lang>_Chars>
+
+call VegaDiv 315,10,35,20,Tags
 
 call VegaDiv 350,10,50,20,<Def0.Vega_<Ref1.Tag0.Lang>_Status>
 
@@ -41,18 +43,20 @@ if (<Src.Ctag0.VegaSearch>)
 				local.Y = <Eval (<local.Y.Metric>*20)+30>
 				local.Pos = <Eval <local._for>+1>
 			if (strmatch(*<Src.Ctag0.VegaAccSearch>*, <Serv.Account.<local._for>.Name>))
-				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>,63
-				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>,63
-				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>,63
-				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>,63
+				call VegaDivSub 10,<local.Y>,35,20,<local.Pos>,63
+				call VegaDivSub 45,<local.Y>,40,20,<Serv.Account.<local._for>.plevel>,63
+				call VegaDivSub 85,<local.Y>,150,20,<Serv.Account.<local._for>.Name>,63
+				call VegaDivSub 235,<local.Y>,80,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>,63
+				call VegaDivSub 315,<local.Y>,35,20,<Serv.Account.<local._for>.TagCount>,63
 				call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
 				call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
 				call VegaDivSub 460,<local.Y>,100,20
 			else
-				call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
-				call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
-				call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
-				call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
+				call VegaDivSub 10,<local.Y>,35,20,<local.Pos>
+				call VegaDivSub 45,<local.Y>,40,20,<Serv.Account.<local._for>.Plevel>
+				call VegaDivSub 85,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
+				call VegaDivSub 235,<local.Y>,80,20,<Serv.Account.<local._for>.Chars> / <Serv.Account.<local._for>.MaxChars>
+				call VegaDivSub 315,<local.Y>,35,20,<Serv.Account.<local._for>.TagCount>
 				call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
 				call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local._for>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local._for>.block>) ? 35:0>
 				call VegaDivSub 460,<local.Y>,100,20
@@ -70,13 +74,15 @@ else
 		if (<Serv.Account.<local._for>>)
 			local.Y = <Eval (<local.Y.Metric>*20)+30>
 			local.Pos = <Eval <local._for>+1>
-			call VegaDivSub 10,<local.Y>,40,20,<local.Pos>
+			call VegaDivSub 10,<local.Y>,35,20,<local.Pos>
 
-			call VegaDivSub 50,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
+			call VegaDivSub 45,<local.Y>,40,20,<Serv.Account.<local._for>.Plevel>
 
-			call VegaDivSub 200,<local.Y>,100,20,<Serv.Account.<local._for>.Chars> of <Serv.Account.<local._for>.MaxChars>
+			call VegaDivSub 85,<local.Y>,150,20,<Serv.Account.<local._for>.Name>
 
-			call VegaDivSub 300,<local.Y>,50,20,<Serv.Account.<local._for>.TagCount>
+			call VegaDivSub 235,<local.Y>,80,20,<Serv.Account.<local._for>.Chars> of <Serv.Account.<local._for>.MaxChars>
+
+			call VegaDivSub 315,<local.Y>,35,20,<Serv.Account.<local._for>.TagCount>
 
 			call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local._for>.name>>) ? 65:35>
 
@@ -157,7 +163,6 @@ ON=200 201
 		endfor
 		// <break>
 		Src.Ctag0.VegaAccPage = <Eval (<local.GetMeToPage>-1)*15>
-		serv.log <local.getmetopage>
 	else
 		Src.Ctag0.VegaSearch = 
 		Src.Ctag0.VegaAccSearch = 
