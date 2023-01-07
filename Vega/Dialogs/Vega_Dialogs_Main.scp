@@ -150,7 +150,7 @@ ON=3000 3999 // Misc Button
 		src.xnuke	
 	elif (<Argn1> == 3007) //supertele
 		src.dialogclose d_lux_vega //If stay open, impossible to cancel supertele
-		src.t
+		src.f_SuperTele
 	elif (<Argn1> == 3008) //SuperMove
 		src.dialogclose d_lux_vega
 		src.f_SuperMove
@@ -159,7 +159,8 @@ ON=3000 3999 // Misc Button
 	elif (<Argn1> == 3010) //AllShow
 		src.allshow=<QVAL <src.allshow> ? 0 : 1 >
 	elif (<Argn1> == 3011) //SuperRemove
-		//todo
+		src.dialogclose d_lux_vega
+		src.f_SuperRemove
 	elif (<Argn1> == 3012) //HearAll	
 		src.Hearall=<QVAL <src.Hearall> ? 0 : 1 >
 	endif
@@ -220,15 +221,17 @@ ON=6000 6099 // Advanced
 	
 	elif (<Argn1> == 6003) //Debug
 		src.debug=<QVAL <src.debug> ? 0 : 1 >
-	elif (<Argn1> == 6004) //Free1
-	elif (<Argn1> == 6005) //Free2
-	elif (<Argn1> == 6006) //Free3
-	elif (<Argn1> == 6007) //Free4
-	elif (<Argn1> == 6008) //Free5
-	elif (<Argn1> == 6009) //Free6
-	elif (<Argn1> == 6010) //Free7
-	elif (<Argn1> == 6011) //Free8
-	elif (<Argn1> == 6012) //Free9
+	elif (<Argn1> == 6004) //CmdList
+		src.commandhelp
+	elif (<Argn1> == 6005) //Wiki
+		src.weblink wiki.spherecommunity.net\
+	elif (<Argn1> == 6006) //Free1
+	elif (<Argn1> == 6007) //Free2
+	elif (<Argn1> == 6008) //Free3
+	elif (<Argn1> == 6009) //Free4
+	elif (<Argn1> == 6010) //Free5
+	elif (<Argn1> == 6011) //Free6
+	elif (<Argn1> == 6012) //Free7
 	endif
 
 ON=6100 6199 // Custom

@@ -1,0 +1,21 @@
+[FUNCTION f_SuperTele]	// A better teleporting command than .tele.
+TARGETFG t_sub
+
+[FUNCTION Supertele_sub]
+IF (<ARGO>)
+	GO <ARGO.P>
+ELSEIF (<TARGP>)
+	GO <TARGP>
+ELSE
+	SYSMESSAGE Target not valid
+ENDIF
+TARGETFG Supertele_sub
+
+[FUNCTION f_SuperRemove]	// A better teleporting command than .tele.
+TARGETFG SuperRemove_sub
+
+[FUNCTION SuperRemove_sub]
+IF (<Argo.isvalid> && !<Argo.isplayer> )
+    ARGO.remove
+ENDIF
+TARGETFG SuperRemove_sub
