@@ -3,7 +3,10 @@
 :radioactive: **WARNING:** This is a **pre-release**, the code is not stable yet. Please keep in mind that if you decide to install it in a live shard you will take your own risk for data corruption. You **MUST** use it only on a Test Shard until a Stable Version is released.
 
 ## Preview
-![Vega](https://i.gyazo.com/567c88b30146eb16e2551ad8dea8e47e.png)
+![image](https://user-images.githubusercontent.com/51728381/212334845-4adcce61-d872-4939-8656-f163e0e66b5a.png)
+![image](https://user-images.githubusercontent.com/51728381/212335133-8ee71584-079b-4b2d-8396-3b1016ca0027.png)
+
+![image](https://user-images.githubusercontent.com/51728381/212335068-a25f33d3-82bb-44c8-9d5e-0713d3d7ce71.png)
 
 ## Installation
 In order to use correctly Vega you need to install the folder inside your SphereX `scripts` folder.
@@ -28,29 +31,37 @@ To open the assistant digit `.vega` or `.v` in game.
 ## Changelogs
 
 ```diff
++ 6 January 2023
+! by Jhobean
+Added: Supermove dialog for item and mapping some button
+Added: 6 Customs button can be easy mapped with custom function.
+! by Luxion
+Added: Account Creation form
+
 + 5 January 2023
-! 4:12am by Jhobean
+! by Jhobean
 Added: Buttons functions for MainDialog
 Changed: Code optimization with "elif" instead of endif -> if
-! 1:52am by Luxion
+Added: Advanced section on main page
+! by Luxion
 Added: Vega now supports DamAdjusted.Lo and DamAdjusted.Hi to get lowest and highest DamAdjusted.
+Added: Console reading in a dialog
+Changed: improve search engine on account
+
 + 4 January 2023
-! 4:07pm by Luxion
+! by Luxion
 Added: FastSwitch for vCharInfo to see Owner vInfo
 Added: FastSwitch for vPlayerInfo to see Mount vInfo
-! 3:43pm by Luxion
 Added: 12 more slots on MainDialog
 Changed: MainDialog headers
-! 3:13am by Luxion
 Fixed: <Uid.<Ref2.Owner.Name>> returns error, changed with <Ref2.Owner.Name>, Ref2 is already the right pointer.
 Fixed: IsVendor has been moved after IsItem to avoid console errors.
-! 3:07am by Jhobean
-Added: vInfo_Char General Panel
-! 2:07am by Luxion
 Added: Stats & Skills on vInfo panel
+! by Jhobean
+Added: vInfo_Char General Panel
 
 + 3 January 2023
-! 23:58pm by Luxion
+! by Luxion
 Added: support for shard customisation
 Added: support for .v command
 ```
