@@ -19,3 +19,19 @@ IF (<Argo.isvalid> && !<Argo.isplayer> )
     ARGO.remove
 ENDIF
 TARGETFG SuperRemove_sub
+
+[FUNCTION F_ROUND_UP]
+//This function will round UP any positive number to the nearest whole number. Ex: 1.12 = 2
+IF <floatval <ARGS>> < <floatval 1>
+	RETURN 1
+else
+	LOCAL.INT = <FEVAL <FLOATVAL <ARGS>>>
+ENDIF
+
+IF (<FLOATVAL <ARGS>/<LOCAL.INT>> > <floatval 1>)
+    RETURN <FEVAL <FLOATVAL (<ARGS>) + 1>>
+else
+	RETURN <LOCAL.INT>
+ENDIF
+
+[EOF]
