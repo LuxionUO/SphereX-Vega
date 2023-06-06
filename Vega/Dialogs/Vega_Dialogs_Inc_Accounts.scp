@@ -106,7 +106,7 @@ dtextentrylimited 54 332 110 20 65 1 16 <QVAL (<Src.Ctag0.VegaSearch>) ? <local.
 call VegaDivSub 400,330,160,20
 call VegaDiv 400,330,20,20
 call VegaDiv 540,330,20,20
-local.TotalPages = <Eval (<Serv.Accounts>/15)+1>
+local.TotalPages = <F_ROUND_UP <floatval <Serv.Accounts>/15>>
 if (<Src.Ctag0.VegaAccPage>)
 	button 402 333 5603 5607 1 0 100
 endif
@@ -116,8 +116,8 @@ if !(<Src.Ctag0.VegaAccPage>)
 		local.PrintNextPage = 1
 	endif
 else
-	serv.log <Eval <Serv.Accounts>/(<Src.Ctag0.VegaAccPage>/15)>
-	if (<Eval <Serv.Accounts>/((<Src.Ctag0.VegaAccPage>*2)/15)> > 15)
+	//# of last show < total QTE?
+	if (<Eval <Src.Ctag0.VegaAccPage> + 15> < <Serv.Accounts>)
 		local.PrintNextPage = 1
 	endif
 endif
