@@ -106,6 +106,7 @@ dtextentrylimited 54 332 110 20 65 1 16 <QVAL (<Src.Ctag0.VegaSearch>) ? <local.
 call VegaDivSub 400,330,160,20
 call VegaDiv 400,330,20,20
 call VegaDiv 540,330,20,20
+
 local.TotalPages = <F_ROUND_UP <floatval <Serv.Accounts>/15>>
 if (<Src.Ctag0.VegaAccPage>)
 	button 402 333 5603 5607 1 0 100
@@ -116,8 +117,8 @@ if !(<Src.Ctag0.VegaAccPage>)
 		local.PrintNextPage = 1
 	endif
 else
-	//# of last show < total QTE?
-	if (<Eval <Src.Ctag0.VegaAccPage> + 15> < <Serv.Accounts>)
+    //# of last show < total QTE?
+    if (<Eval <Src.Ctag0.VegaAccPage> + 15> < <Serv.Accounts>)
 		local.PrintNextPage = 1
 	endif
 endif
@@ -182,14 +183,23 @@ ON=500
 				Serv.Account Add <local.Account> <local.Password>
 				Serv.Account <local.Account> plevel <local.Plevel>
 				Src.Sysmessage Account '<local.Account>' created successfully.
+				serv.log Account '<local.Account>' created successfully.
 			else
 				Src.Sysmessage @33,,1 Account '<local.Account>' already exists.
+				serv.log Account '<local.Account>' already exists.
 			endif
 		endif
 	else
 		Src.Sysmessage @33,,1 [Security] You don't have the privileges to do that.
 	endif
 	Src.Dialog d_vega_server_accounts
+
+ON=1000 1999 //Manage button
+ctag.accountNavigation=<EVAL <ARGN>-1000>
+sdialog d_vega_server_accounts
+sdialog d_vega_server_accounts_manage
+
+
 
 [FUNCTION AccountIsOnline]
 local.Account = <Args>
@@ -207,5 +217,98 @@ if (<Serv.Account.<local.Account>.Chars> > 0)
 else
 	return 0
 endif
+
+
+
+[DIALOG d_vega_server_accounts_manage]
+100,100
+CALL VegaLoadMemory
+local.account=<ctag.accountNavigation>
+// <open> Setup
+local.Width = 570
+local.Height = 420
+local.WX = 205
+local.WY = 49
+local.WPX = <Eval (<local.Width>/2)-(<local.WX>/2)>
+local.WPY = 0
+// <close> Setup
+
+RESIZEPIC 0 0 <Def0.Vega_Design_GenericBackground> <local.Width> <local.Height>
+
+call VegaDiv 10,10,35,20,#
+
+call VegaDiv 45,10,40,20,Plevel
+
+call VegaDiv 85,10,150,20,<Def0.Vega_<Ref1.Tag0.Lang>_AccountName>
+
+call VegaDiv 235,10,80,20,<Def0.Vega_<Ref1.Tag0.Lang>_Chars>
+
+call VegaDiv 315,10,35,20,Tags
+
+call VegaDiv 350,10,50,20,<Def0.Vega_<Ref1.Tag0.Lang>_Status>
+
+call VegaDiv 400,10,60,20,<Def0.Vega_<Ref1.Tag0.Lang>_Access>
+
+call VegaDiv 460,10,100,20,<Def0.Vega_<Ref1.Tag0.Lang>_Actions>
+
+if (<Serv.Account.<local.account>>)
+	local.Y = <Eval (<local.Y.Metric>*20)+30>
+	local.Pos = <Eval <local.account>+1>
+	call VegaDivSub 10,<local.Y>,35,20,<local.Pos>
+
+	call VegaDivSub 45,<local.Y>,40,20,<Serv.Account.<local.account>.Plevel>
+
+	call VegaDivSub 85,<local.Y>,150,20,<Serv.Account.<local.account>.Name>
+
+	call VegaDivSub 235,<local.Y>,80,20,<Serv.Account.<local.account>.Chars> of <Serv.Account.<local.account>.MaxChars>
+
+	call VegaDivSub 315,<local.Y>,35,20,<Serv.Account.<local.account>.TagCount>
+
+	call VegaDivSub 350,<local.Y>,50,20,<QVAL (<AccountIsOnline <Serv.Account.<local.account>.name>>) ? Online:Offline>,<QVAL (<AccountIsOnline <Serv.Account.<local.account>.name>>) ? 65:35>
+
+	call VegaDivSub 400,<local.Y>,60,20,<QVAL (<Serv.Account.<local.account>.block>) ? Banned:Granted>,<QVAL (<Serv.Account.<local.account>.block>) ? 35:0>
+	call VegaDivSub 460,<local.Y>,100,20
+	button 464 <Eval <local.Y>+3> 5601 5605 1 0 1
+	dtext 484 <Eval <local.Y>+2> 0 <Def.Vega_<Ref1.Tag0.Lang>_Delete>
+
+	call VegaDivSub 460,<eval <local.Y>+30>,100,20
+	button 464 <Eval <local.Y>+3> 5601 5605 1 0 2
+	dtext 484 <Eval <local.Y>+3> 0 <QVAL (<Serv.Account.<local.account>.BLOCK>)? Unban:Ban> 
+
+	local.Y.Metric += 1
+endif
+dtext 50 95 2048 Plevel
+dtext 150 95 1000 <Serv.Account.<local.account>.Plevel> (<DEF0.PlevelName.<Serv.Account.<local.account>.Plevel>>)
+dtext 50 115 2048 First login
+dtext 150 115 1000 <ACCOUNT.FIRSTCONNECTDATE> (IP <Serv.Account.<local.account>.FIRSTIP>)
+dtext 50 135 2048 Last login
+dtext 150 135 1000 <ACCOUNT.LASTCONNECTDATE> (IP <Serv.Account.<local.account>.LASTIP>)
+dtext 50 155 2048 Connected time
+dtext 150 155 1000 <FormatMinutes <Serv.Account.<local.account>.TOTALCONNECTTIME>>
+
+
+[DIALOG d_vega_server_accounts_manage BUTTON]
+
+ON=1 //Delete ACCOUNT!
+	if (<Src.Account.Plevel> == 7)
+		Src.Sysmessage Account '<Serv.Account.<ctag.accountNavigation>.Name>' Delete successfully.
+		Serv.Account <Serv.Account.<ctag.accountNavigation>.Name> delete	
+	else
+		Src.Sysmessage @33,,1 [Security] You don't have the privileges to do that.
+	endif
+
+ON=2 //Ban/Unban
+IF (<SRC.ACCOUNT.PLEVEL> <= <Serv.Account.<ctag.accountNavigation>.PLEVEL>)
+	SRC.SYSMESSAGE <DEFMSG.msg_acc_priv>
+ELSE
+	serv.Account <Serv.Account.<ctag.accountNavigation>.name> BLOCK <QVAL (<Serv.Account.<ctag.accountNavigation>.BLOCK>)? 0:1>
+	ARGS="Account '<serv.Account.<ctag.accountNavigation>.name>' was <QVAL (<Serv.Account.<ctag.accountNavigation>.BLOCK>)? banned:unbanned> by '<SRC.NAME>'"
+	SRC.SYSMESSAGE <ARGS>
+	SERV.LOG @<ARGS>
+ENDIF
+DIALOGCLOSE d_vega_server_accounts
+DIALOG d_vega_server_accounts
+DIALOG d_vega_server_accounts_manage
+
 
 [EOF]
